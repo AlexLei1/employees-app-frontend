@@ -1,0 +1,88 @@
+@import 'variables';
+//330
+@mixin mobileS {
+  @media only screen and (max-width: $mobileS) {
+    @content;
+  }
+}
+//400
+@mixin mobileM {
+  @media only screen and (max-width: $mobileM) {
+    @content;
+  }
+}
+//480
+@mixin mobileL {
+  @media only screen and (max-width: $mobileL) {
+    @content;
+  }
+}
+//600
+@mixin tabletS {
+  @media only screen and (max-width: $tabletS) {
+    @content;
+  }
+}
+//768
+@mixin tabletL {
+  @media only screen and (max-width: $tabletL) {
+    @content;
+  }
+}
+//900
+@mixin desktopXS {
+  @media only screen and (max-width: $desktopXS) {
+    @content;
+  }
+}
+//1080
+@mixin desktopS {
+  @media only screen and (max-width: $desktopS) {
+    @content;
+  }
+}
+//1200
+@mixin desktopM {
+  @media only screen and (max-width: $desktopM) {
+    @content;
+  }
+}
+//1400
+@mixin desktopL {
+  @media only screen and (max-width: $desktopL) {
+    @content;
+  }
+}
+
+@mixin fade-bg-gradient($direction: 90deg) {
+	&::before {
+		content: '';
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0px;
+		left: 0px;
+		z-index: 1;
+
+		background: linear-gradient(
+			$direction,
+			#101215 3.31%,
+			rgba(#101215, 0.99) 7.71%,
+			rgba(#101215, 0.96) 12.11%,
+			rgba(#101215, 0.91) 16.51%,
+			rgba(#101215, 0.85) 20.91%,
+			rgba(#101215, 0.76) 25.31%,
+			rgba(#101215, 0.67) 29.71%,
+			rgba(#101215, 0.55) 34.11%,
+			rgba(#101215, 0.44) 38.52%,
+			rgba(#101215, 0.33) 42.92%,
+			rgba(#101215, 0.23) 47.32%,
+			rgba(#101215, 0.15) 51.72%,
+			rgba(#101215, 0.08) 56.12%,
+			rgba(#101215, 0.03) 60.52%,
+			rgba(#101215, 0.01) 64.92%,
+			rgba(#101215, 0) 69.32%
+		);
+	}
+}
+

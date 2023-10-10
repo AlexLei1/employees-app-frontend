@@ -1,0 +1,79 @@
+// color
+$primary-color: #26b880;
+$gray-color-300: #d9dae8;
+$gray-color-500: #999AA5;
+$gray-color-600: #66676E;
+$gray-color-700: #39393f;
+$gray-color-800: #242529;
+$gray-color-900: #191B1F;
+$gray-transparent-color-900: #191b1f9c;
+$gray-color-950: #101215;
+$yellow-color-700: #F5C521;
+$white-color: rgb(255, 255, 255);
+$black-color: rgb(255, 255, 255);
+$dark-navy: #020c1b;
+
+// fonts
+$fz-xxs: 12px;
+$fz-xs: 13px;
+$fz-sm: 14px;
+$fz-md: 16px;
+$fz-lg: 18px;
+$fz-xl: 20px;
+$fz-xxl: 22px;
+$fz-sub-heading: clamp(14px, 5vw, 28px);
+
+// theme
+$mobileS: 330px;
+$mobileM: 400px;
+$mobileL: 480px;
+$tabletS: 600px;
+$tabletL: 768px;
+$desktopXS: 900px;
+$desktopS: 1080px;
+$desktopM: 1200px;
+$desktopL: 1400px;
+
+// element-sizes & animation
+$border-radius: 4px;
+$nav-height: 100px;
+$nav-scroll-height: 70px;
+$tab-height: 42px;
+$tab-width: 120px;
+$easing: cubic-bezier(0.645,0.045,0.355,1);
+$transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
+
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes heart-burst {
+	0% {
+		background-position: left;
+	}
+	100% {
+		background-position: right;
+
+	}
+}
+
+@keyframes scaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
