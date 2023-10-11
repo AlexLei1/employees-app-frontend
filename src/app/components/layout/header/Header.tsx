@@ -5,14 +5,17 @@ import Link from 'next/link'
 
 const Header: FC = () => {
 	return (
-		<header>
+		<header className={styles.header}>
 			<div>
-				icon
-				title
-			</div>
+				
+			</div> 
 			<ul>
-				<li>login</li>
-				<li>register</li>
+				<li>
+					<Link href='/login'>login</Link>
+				</li>
+				<li>
+					<Link href='/register'>register</Link>
+				</li>
 			</ul>
 		</header>
 	)

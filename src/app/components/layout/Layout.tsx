@@ -4,11 +4,7 @@ import Header from './header/Header'
 
 const Layout: FC = () => {
   	return (
-		<>
-			<div>
-				<Header/>
-			</div>
-		</>
+		<Header/>
 	)
 }
 
