@@ -23,7 +23,7 @@
 		"@/components/*": ["app/components/*"],
 		"@/ui/*": ["app/components/ui/*"],
 		"@/screens/*": ["app/components/screens/*"],
-		"@/shared/*": ["app/shared/*"],
+		"@/types/*": ["app/types/*"],
 		"@/hooks/*": ["app/hooks/*"],
 		"@/services/*": ["app/services/*"],
 		"@/utils/*": ["app/utils/*"],
