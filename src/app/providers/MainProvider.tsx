@@ -1,5 +1,4 @@
 import AuthProvider from './AuthProvider/AuthProvider'
-import HeadProvider from './HeadProvider/HeadProvider'
 import { FC } from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { Provider } from 'react-redux'
@@ -18,15 +17,13 @@ const queryClient = new QueryClient({
 
 const MainProvider: FC<TypeComponentAuthFields> = ({ children, Component }) => {
 	return (
-		<HeadProvider>
-			<Provider store={store}>
-				<QueryClientProvider client={queryClient}>
-					<AuthProvider Component={Component}>
-						<Layout>{children}</Layout>
-					</AuthProvider>
-				</QueryClientProvider>
-			</Provider>
-		</HeadProvider>
+		<Provider store={store}>
+			<QueryClientProvider client={queryClient}>
+				<AuthProvider Component={Component}>
+					<Layout>{children}</Layout>
+				</AuthProvider>
+			</QueryClientProvider>
+		</Provider>
 	)
 }
 
