@@ -1,4 +1,4 @@
-import Register from '@/components/screens/register/Register'
+import Register from '@/components/screens/auth/register/Register'
 import { NextPage } from 'next'
 
 const RegisterPage: NextPage = () => {

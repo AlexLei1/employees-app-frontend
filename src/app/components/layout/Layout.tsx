@@ -2,9 +2,15 @@ import { FC } from 'react'
 import Header from './header/Header'
 
 
-const Layout: FC = () => {
+const Layout: FC = ({children}) => {
   	return (
-		<Header/>
+		
+		<>
+			<div>
+				<Header/>
+				{children}
+			</div>
+		</>
 	)
 }
 

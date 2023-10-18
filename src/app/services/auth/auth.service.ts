@@ -40,8 +40,18 @@ export const AuthService = {
 		return response
 	},
 
+	async current(token: string) {
+		const response = await axios.get(
+			`${API_URL}${getAuthUrl('/current')}`
+		)
+
+		if (response.data.token) {
+			saveToStorage(response.data)
+		}
+	},
+
 	logout() {
 		removeTokensStorage()
-		localStorage.removeItem('user')
+		localStorage.w('user')
 	}
 }

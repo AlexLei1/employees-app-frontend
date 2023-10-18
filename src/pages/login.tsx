@@ -1,4 +1,4 @@
-import Login from '@/components/screens/login/Login'
+import Login from '@/components/screens/auth/login/Login'
 import { NextPage } from 'next'
 
 const LoginPage: NextPage = () => {

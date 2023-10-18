@@ -1,12 +1,11 @@
 import Cookies from "js-cookie";
 
 export interface ITokens {
-	accessToken: string
+	token: string
 }
 
-
 export const saveTokenStorage = (data: ITokens) => {
-	Cookies.set('accessToken', data.accessToken)
+	Cookies.set('token', data.token)
 }
 
 export const saveToStorage = (data: any) => {
@@ -15,6 +14,5 @@ export const saveToStorage = (data: any) => {
 }
 
 export const removeTokensStorage = () => {
-	Cookies.remove('accessToken')
-	Cookies.remove('refreshToken')
+	Cookies.remove('token')
 }

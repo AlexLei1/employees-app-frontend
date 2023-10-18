@@ -2,7 +2,6 @@ import { AuthService } from "@/services/auth/auth.service";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { toastr } from "react-redux-toastr";
 
-
 export const login = createAsyncThunk(
 	'auth/login',
 	async ({email, password}, thuncAPI) => {
@@ -26,6 +25,19 @@ export const register = createAsyncThunk(
 			return res.data
 		} catch (err) {
 			console.log(err)
+			return thuncAPI.rejectWithValue(error)
+		}
+	}
+)
+
+export const current = createAsyncThunk(
+	'auth/current',
+	async (_, thuncAPI) => {
+		try {
+			const res = await AuthService.current()
+			toastr.success('current', 'Completed successfully')
+		} catch(err) {
+			console.log(err)
 			return thunkAPI.rejectWithValue(error)
 		}
 	}
@@ -36,3 +48,5 @@ export const logout = createAsyncThunk(
 	async () => {
 		await AuthService.logout()
 })
+
+

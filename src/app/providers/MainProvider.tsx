@@ -1,11 +1,12 @@
-import AuthProvider from './AuthProvider/AuthProvider'
+
 import { FC } from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { Provider } from 'react-redux'
-import { store } from 'store/store'
 import Layout from '@/components/layout/Layout'
+import { store } from '@/store/store'
+import AuthProvider from './AuthProvider/AuthProvider'
+import { TypeComponentAuthFields } from '@/types/auth.type'
 
-import { TypeComponentAuthFields } from '@/shared/types/auth.types'
 
 const queryClient = new QueryClient({
 	defaultOptions: {
