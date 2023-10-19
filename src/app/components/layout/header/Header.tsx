@@ -4,11 +4,12 @@ import cn from 'classnames'
 import Link from 'next/link'
 import {MaterialIcon} from '@/ui/icons/MaterialIcon'
 import useActions from '@/hooks/useActions'
+import { useAuth } from '@/hooks/useAuth'
 
 const Header: FC = () => {
-
-	const { logout } = useActions()
-
+	const {user} = useAuth()
+	console.log(user)
+	const { logout, current } = useActions()
 	const logoutHandler = (e: MouseEvent<HTMLAnchorElement>) => {
 		e.preventDefault()
 		logout()
@@ -33,17 +34,12 @@ const Header: FC = () => {
 					<MaterialIcon name={'MdLocalFireDepartment'}/>
 					<Link href='/register'>register</Link>
 				</li>
-				<li>
-					<MaterialIcon name={'MdLocalFireDepartment'}/>
-					<Link href='/register'>register</Link>
-				</li>
-				<li>
-					<button onClick={logoutHandler}>
-						<MaterialIcon name="MdLogout" />
-						<span>Logout</span>
-					</button>
-				</li>
 			</ul>
+			<div>
+				<button onClick={() => logout}>Logout</button>
+				<button onClick={() => current}>Current</button>
+				
+			</div>
 		</header>
 	)
 }

@@ -14,13 +14,17 @@ export interface IUserInitialState {
 	isLoading: boolean
 }
 
-export interface InterfaceEmailPassword {
+export interface InterfaceEmailPassword { // данные которые отправляем серверу
+	email: string
+	password: string
+}
+export interface InterfaceNameEmailPassword { // данные которые отправляем серверу
+	name: string
 	email: string
 	password: string
 }
 
-export interface IAuthResponse extends ITokens {
-	user: IUser & {
-		isAdmin: boolean
-	}
+
+export interface IAuthResponse extends ITokens { // даныне которые приходят от сервера
+	user: IUser 
 }

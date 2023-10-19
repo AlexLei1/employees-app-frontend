@@ -1,44 +1,46 @@
 import { AuthService } from "@/services/auth/auth.service";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { toastr } from "react-redux-toastr";
+import { IAuthResponse, InterfaceNameEmailPassword, InterfaceEmailPassword } from "./user.interface";
 
-export const login = createAsyncThunk(
+export const login = createAsyncThunk<IAuthResponse, InterfaceEmailPassword>(
 	'auth/login',
-	async ({email, password}, thuncAPI) => {
+	async ({email, password}, thunkAPI) => {
 		try {
 			const res = await AuthService.login(email, password)
 			toastr.success('Login', 'Completed successfully')
 			return res.data
 		} catch (err) {
-			console.log(err)
-			return thunkAPI.rejectWithValue(error)
+
+			return thunkAPI.rejectWithValue(err)
 		}
 	}
 )
 
-export const register = createAsyncThunk(
+export const register = createAsyncThunk<IAuthResponse, InterfaceNameEmailPassword>(
 	'auth/register',
-	async ({email, password, name}, thuncAPI) => {
+	async ({email, password, name}, thunkAPI) => {
 		try {
 			const res = await AuthService.register(email, password, name)
 			toastr.success('Register', 'Completed successfully')
 			return res.data
 		} catch (err) {
-			console.log(err)
-			return thuncAPI.rejectWithValue(error)
+
+			return thunkAPI.rejectWithValue(err)
 		}
 	}
 )
 
 export const current = createAsyncThunk(
 	'auth/current',
-	async (_, thuncAPI) => {
+	async (_, thunkAPI) => {
 		try {
-			const res = await AuthService.current()
-			toastr.success('current', 'Completed successfully')
+			const res = await AuthService.current
+			debugger
+			console.log(res)
+			return res
 		} catch(err) {
-			console.log(err)
-			return thunkAPI.rejectWithValue(error)
+			return thunkAPI.rejectWithValue(err)
 		}
 	}
 )

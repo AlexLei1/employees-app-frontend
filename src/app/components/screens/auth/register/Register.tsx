@@ -7,7 +7,6 @@ interface Register {
 	name: string
 	email: string
 	password: string
-	confirmPassword: string
 }
 const Register: FC = () => {
 
@@ -21,14 +20,9 @@ const Register: FC = () => {
 
 	const { register } = useActions()
 
-	useEffect(() => {
-		const dataPassword = watch((value, {name, type}) => {
-			console.log(value, name, type)
-		})
-	}, [watch])
 
 	const onSubmit:SubmitHandler<Register> = (data) => {
-		console.log(data)
+		register(data)
 		reset()
 	}
 
@@ -71,18 +65,6 @@ const Register: FC = () => {
 							message: 'Минимальное число символов 6'
 					}})}/>
 				{errors?.password && <div style={{color: 'red'}}>{errors.password.message}</div>}
-				
-				<input 
-					disabled={!watch("password")}
-					type="password" 
-					placeholder='Password' 
-					{...registerInput("confirmPassword", {
-						required: 'Введите пароль повторно', 
-						minLength: {
-							value: 6, 
-							message: 'Минимальное число символов 6'
-					}})}/>
-				{errors?.confirmPassword && <div style={{color: 'red'}}>{errors.confirmPassword.message}</div>}
 
 				<div>
 					<button>Send</button>

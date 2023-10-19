@@ -6,10 +6,12 @@ import { TypeComponentAuthFields } from '@/types/auth.type'
 
 type TypeAppProps = AppProps & TypeComponentAuthFields
 
-export default function App({Component, pageProps}: TypeAppProps) {
+const App = ({Component, pageProps}: TypeAppProps) => {
+
   return (
 	<MainProvider Component={Component}>
 		<Component {...pageProps}/>
 	</MainProvider>
   )
 }
+export default App

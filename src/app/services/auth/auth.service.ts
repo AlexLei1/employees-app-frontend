@@ -7,6 +7,10 @@ import { removeTokensStorage, saveToStorage } from './auth.helper'
 /* /api/user/register */
 /* /api/user/current */
 
+export const getContentType = () => ({
+	'Content-Type': 'application/json',
+})
+
 export const AuthService = {
 	async login(email: string, password: string) {
 		const response = await axios.post(
@@ -16,8 +20,7 @@ export const AuthService = {
 				password
 			}
 		)
-
-		if (response.data.accessToken) {
+		if (response.data.token) {
 			saveToStorage(response.data)
 		}
 
@@ -32,26 +35,30 @@ export const AuthService = {
 				name
 			}
 		)
-
-		if (response.data.accessToken) {
+	
+		if (response.data.token) {
 			saveToStorage(response.data)
 		}
 
 		return response
 	},
 
-	async current(token: string) {
+	async current() {
+		const token  = Cookies.get('token')
 		const response = await axios.get(
-			`${API_URL}${getAuthUrl('/current')}`
+			`${API_URL}${getAuthUrl('/current')}`,
 		)
-
+		
 		if (response.data.token) {
 			saveToStorage(response.data)
 		}
+
+		return response
 	},
+
 
 	logout() {
 		removeTokensStorage()
-		localStorage.w('user')
+		localStorage.removeItem('user')
 	}
 }

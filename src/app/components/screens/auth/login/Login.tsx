@@ -19,7 +19,6 @@ const Login: FC = () => {
 	} = useForm<ILogin>({mode: 'onChange'})
 
 	const { login } = useActions()
-	console.log(process.env.API_URL)
 	//принимает данные полей из формы для отправки на сервер
 	const onSubmit:SubmitHandler<ILogin> = (data) => {
 		login(data)
