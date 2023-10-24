@@ -1,3 +1,5 @@
+import Button from '@/components/ui/button/Button'
+import Field from '@/components/ui/form-elements/Field'
 import useActions from '@/hooks/useActions'
 import { useAuthRedirect } from '@/hooks/useAuthRedirect'
 import { validEmail } from '@/utils/valid/regex'
@@ -21,42 +23,45 @@ const Login: FC = () => {
 	const { login } = useActions()
 	//принимает данные полей из формы для отправки на сервер
 	const onSubmit:SubmitHandler<ILogin> = (data) => {
-		login(data)
+		console.log(data)
 		reset()
 	}
 
 	return (
 		<section>
 			<form onSubmit={ handleSubmit(onSubmit)}>
-
-				<input 
-					type="email" 
-					placeholder='Email' 
+			
+				<Field 
 					{...registerInput("email", {
 						required: 'Введите email',
 						pattern: {
 							value: validEmail,
 							message: 'Введите существующий email'
 						}
-					})}/>
-				{errors?.email && <div style={{color: 'red'}}>{errors.email.message}</div>}
+					})}
+					type="email" 
+					placeholder='Email'
+					error={errors.email} 
+				/>
 
-				<input 
-					type="password" 
-					placeholder='Password' 
+				<Field 
 					{...registerInput("password", {
 						required: 'Введите пароль', 
 						minLength: {
 							value: 6, 
 							message: 'Минимальное число символов 6'
-					}})}/>
-				{errors?.password && <div style={{color: 'red'}}>{errors.password.message}</div>}
+					}})}
+					type="password" 
+					placeholder='Password'
+					error={errors.password} 
+				/>
 
-				<div>
-					<button>Send</button>
-				</div>
+				<Button>
+					send
+				</Button>
 				
 			</form>
+
 		</section>
 	)
 }

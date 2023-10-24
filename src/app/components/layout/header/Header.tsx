@@ -1,9 +1,7 @@
-import { FC, MouseEvent } from 'react'
+import { FC, MouseEvent, forwardRef } from 'react'
 import styles from './header.module.scss'
 import Link from 'next/link'
 import {MaterialIcon} from '@/ui/icons/MaterialIcon'
-
-
 
 
 const Header: FC = () => {
@@ -12,7 +10,7 @@ const Header: FC = () => {
 	// 	e.preventDefault()
 	// 	logout()
 	// }
-
+	
 	
 
 	return (
@@ -27,31 +25,25 @@ const Header: FC = () => {
 			
 			<ul>
 				<li>
-					<Link href='/login'>
-						<a onClick={() => console.log('logout')}>
-							<MaterialIcon name={'MdRefresh'}/>
-							<span>logout</span>
-						</a>
-					</Link>
+					<a onClick={() => console.log('logout')}>
+						<MaterialIcon name={'MdRefresh'}/>
+						<span>logout</span>
+					</a>
 				</li>
 				<li>
 					<Link href='/login'>
-						<a onClick={() => console.log('login')}>
-							<MaterialIcon name={'MdRefresh'}/>
-							<span>login</span>
-						</a>
+						<MaterialIcon name={'MdRefresh'}/>
+						<span>login</span>
 					</Link>
 				</li>
 				<li>
 					<Link href='/register'>
-						<a onClick={() => console.log('register')}>
-							<MaterialIcon name={'MdLocalFireDepartment'}/>
-							<span>register</span>
-						</a>
+						<MaterialIcon name={'MdLocalFireDepartment'}/>
+						<span>register</span>
 					</Link>
 				</li>
-			</ul>
-		</header>
+				</ul>
+			</header>
 	)
 }
 
