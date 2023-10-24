@@ -1,46 +1,49 @@
-import { FC, MouseEvent } from 'react'
+import { FC, MouseEvent, forwardRef } from 'react'
 import styles from './header.module.scss'
-import cn from 'classnames'
 import Link from 'next/link'
 import {MaterialIcon} from '@/ui/icons/MaterialIcon'
-import useActions from '@/hooks/useActions'
-import { useAuth } from '@/hooks/useAuth'
+
 
 const Header: FC = () => {
-	const {user} = useAuth()
-	console.log(user)
-	const { logout, current } = useActions()
-	const logoutHandler = (e: MouseEvent<HTMLAnchorElement>) => {
-		e.preventDefault()
-		logout()
-	}
+	
+	// const logoutHandler = (e: MouseEvent<HTMLAnchorElement>) => {
+	// 	e.preventDefault()
+	// 	logout()
+	// }
+	
+	
 
 	return (
 		<header className={styles.header}>
+
 			<div>
-				<ul>
-					<li>
-						<MaterialIcon name={'MdExplore'}/>
-						<Link href={'/'}>Сотруднири</Link>
-					</li>
-				</ul>
+				<Link href={'/'}>
+					<MaterialIcon name={'MdExplore'}/>
+					<h2>Сотрудники</h2>
+				</Link>
 			</div> 
+			
 			<ul>
 				<li>
-					<MaterialIcon name={'MdRefresh'}/>
-					<Link href='/login'>login</Link>
+					<a onClick={() => console.log('logout')}>
+						<MaterialIcon name={'MdRefresh'}/>
+						<span>logout</span>
+					</a>
 				</li>
 				<li>
-					<MaterialIcon name={'MdLocalFireDepartment'}/>
-					<Link href='/register'>register</Link>
+					<Link href='/login'>
+						<MaterialIcon name={'MdRefresh'}/>
+						<span>login</span>
+					</Link>
 				</li>
-			</ul>
-			<div>
-				<button onClick={() => logout}>Logout</button>
-				<button onClick={() => current}>Current</button>
-				
-			</div>
-		</header>
+				<li>
+					<Link href='/register'>
+						<MaterialIcon name={'MdLocalFireDepartment'}/>
+						<span>register</span>
+					</Link>
+				</li>
+				</ul>
+			</header>
 	)
 }
 

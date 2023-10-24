@@ -36,7 +36,6 @@ export const current = createAsyncThunk(
 	async (_, thunkAPI) => {
 		try {
 			const res = await AuthService.current
-			debugger
 			console.log(res)
 			return res
 		} catch(err) {

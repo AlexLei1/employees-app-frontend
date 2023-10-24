@@ -1,16 +1,12 @@
-import { FC } from 'react'
+import React, { FC, PropsWithChildren } from 'react'
 import Header from './header/Header'
-import useActions from '@/hooks/useActions'
+import styles from './layout.module.scss'
 
+const Layout: FC<PropsWithChildren<unknown>> = ({children}) => {
 
-const Layout: FC = ({children}) => {
-
-	const { logout, current } = useActions()
-	current()
   	return (
-		
 		<>
-			<div>
+			<div className={styles.layout}>
 				<Header/>
 				{children}
 			</div>
