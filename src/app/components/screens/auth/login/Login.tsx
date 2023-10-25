@@ -20,7 +20,6 @@ const Login: FC = () => {
 		reset,
 	} = useForm<ILogin>({mode: 'onChange'})
 
-	const { login } = useActions()
 	//принимает данные полей из формы для отправки на сервер
 	const onSubmit:SubmitHandler<ILogin> = (data) => {
 		console.log(data)
