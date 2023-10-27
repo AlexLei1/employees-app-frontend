@@ -22,11 +22,12 @@ const App = ({Component, pageProps}: TypeAppProps) => {
   return (
 	<Provider store={store}>
 		<QueryClientProvider client={queryClient}>
-			<AuthProvider Component={Component}>
+			{/* <AuthProvider Component={Component}>
+
+			</AuthProvider> */}
 				<Layout>
 					<Component {...pageProps}/>
 				</Layout>
-			</AuthProvider>
 		</QueryClientProvider>
 	</Provider>
   )

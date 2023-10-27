@@ -1,8 +1,8 @@
 export interface IUser {
 	id: string;
-    email: string;
-    password: string;
-    name: string;
+	email: string;
+	password: string;
+	name?: string;
 }
 
 // тип данных уходящий серверу

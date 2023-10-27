@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { validEmail } from '@/utils/valid/regex';
+import { validEmail } from '@/utils/regex';
 import Field from '@/components/ui/form-elements/Field';
 import Button from '@/components/ui/button/Button';
 
