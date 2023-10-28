@@ -23,7 +23,6 @@ export const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-	    // когда login произошел успешно 
       .addMatcher(authApi.endpoints.login.matchPending, (state) => {
         state.isLoading = true
       })
