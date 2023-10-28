@@ -1,15 +1,28 @@
 import { IField } from '@/types/form.interface'
-import React from 'react'
+import{ useState } from 'react'
 import { forwardRef } from 'react'
 import styles from './filed.module.scss'
-
+import {MaterialIcon} from '@/ui/icons/MaterialIcon'
 
 
 const Field = forwardRef<HTMLInputElement, IField>(
 	({placeholder, error, type='text', ...rest}, ref) => {
+		
+		const [isShowIcon, setIsShowIcon] = useState(false);
+		
 		return (
 			<div className={styles.filed}>
-				<input ref={ref} {...rest} type={type} />
+
+				{type!=='password' ? 
+					<input ref={ref} {...rest} type={type} /> : 
+					<input autoComplete='on' ref={ref} {...rest} type={isShowIcon ? 'text' : 'password'} />}	
+
+				{type==='password' ? 
+
+					<span onClick={() => setIsShowIcon(!isShowIcon)}>
+						<MaterialIcon name={isShowIcon ? 'MdRemoveRedEye' : 'MdOutlineRemoveRedEye'}/>
+					</span> : null}
+
 				{error && <div style={{color: 'red'}}>{error.message}</div>}
 			</div>
 		)

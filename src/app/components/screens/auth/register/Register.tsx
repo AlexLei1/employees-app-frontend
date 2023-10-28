@@ -1,7 +1,8 @@
 import { FC, useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { validEmail } from '@/utils/valid/regex';
-import useActions from '@/hooks/useActions';
+import { validEmail } from '@/utils/regex';
+import Field from '@/components/ui/form-elements/Field';
+import Button from '@/components/ui/button/Button';
 
 interface Register {
 	name: string
@@ -18,11 +19,9 @@ const Register: FC = () => {
 		watch,
 	} = useForm<Register>({mode: 'onChange'})
 
-	const { register } = useActions()
-
 
 	const onSubmit:SubmitHandler<Register> = (data) => {
-		register(data)
+		console.log(data)
 		reset()
 	}
 
@@ -31,44 +30,44 @@ const Register: FC = () => {
 	return (
 		<section>
 			<form onSubmit={handleSubmit(onSubmit)}>
-
-				<input 
-					type="text" 
-					placeholder='Name' 
+				<Field 
 					{...registerInput("name", {
 						required: 'Введите имя', 
 						minLength: {
 							value: 4, 
 							message: 'Минимальное число символов 4'
-					}})}/>
-				{errors?.name && <div style={{color: 'red'}}>{errors.name.message}</div>}	
-
-				<input 
-					type="email" 
-					placeholder='Email' 
+					}})}
+					type="text" 
+					placeholder='Name'
+					error={errors.name} 
+				/>
+				<Field 
 					{...registerInput("email", {
 						required: 'Введите email',
 						pattern: {
 							value: validEmail,
 							message: 'Введите существующий email'
 						}
-					})}/>
-				{errors?.email && <div style={{color: 'red'}}>{errors.email.message}</div>}
-
-				<input 
-					type="password" 
-					placeholder='Password' 
+					})}
+					type="email" 
+					placeholder='Email'
+					error={errors.email} 
+				/>
+				<Field 
 					{...registerInput("password", {
 						required: 'Введите пароль', 
 						minLength: {
 							value: 6, 
 							message: 'Минимальное число символов 6'
-					}})}/>
-				{errors?.password && <div style={{color: 'red'}}>{errors.password.message}</div>}
+					}})}
+					type="password" 
+					placeholder='Email'
+					error={errors.email} 
+				/>
 
-				<div>
-					<button>Send</button>
-				</div>
+				<Button>
+					send
+				</Button>
 			</form>
 		</section>
 	)

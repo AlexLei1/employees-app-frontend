@@ -1,5 +1,9 @@
-import { reducer as userReducer } from './user/user.slice'
+import { reducer as authReduser } from "./api/auth/auth.slice"
+import { api } from './api/api';
+import { combineReducers } from "@reduxjs/toolkit";
 
-export const reducers = {
-	user: userReducer,
-}
+export const reducers = combineReducers({
+	[api.reducerPath]: api.reducer,
+	auth: authReduser,
+	
+})
