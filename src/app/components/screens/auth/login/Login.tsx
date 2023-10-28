@@ -2,7 +2,7 @@ import Button from '@/components/ui/button/Button'
 import ErrorMassage from '@/components/ui/error-message/ErrorMassage'
 import Field from '@/components/ui/form-elements/Field'
 import useActions from '@/hooks/useActions'
-import { useAuthRedirect } from '@/hooks/useAuthRedirect'
+import { useRedirect } from '@/hooks/useRedirect'
 import { useLoginMutation } from '@/store/api/auth/auth.endpoints'
 import { selectUser } from '@/store/api/auth/auth.slice'
 import { ReqUserData } from '@/types/user.types'
@@ -18,7 +18,7 @@ interface ILogin{
 }
 
 const Login: FC = () => {
-	useAuthRedirect()
+	useRedirect()
 
 	const {
 		register: registerInput, 
@@ -26,6 +26,7 @@ const Login: FC = () => {
 		formState: {errors},
 		reset,
 	} = useForm<ILogin>({mode: 'onChange'})
+
 	const [error, setError] = useState('')
 	const user = useSelector(selectUser) // текущее состояние пользователя
 	const [loginUser, loginUserResult] = useLoginMutation();
@@ -34,7 +35,6 @@ const Login: FC = () => {
     try {
       await loginUser(data).unwrap();
 
-      // navigate("/");
     } catch (err) {
       const maybeError = isErrorWithMessage(err);
 

@@ -15,7 +15,7 @@ const Field = forwardRef<HTMLInputElement, IField>(
 
 				{type!=='password' ? 
 					<input ref={ref} {...rest} type={type} /> : 
-					<input ref={ref} {...rest} type={isShowIcon ? 'text' : 'password'} />}	
+					<input autoComplete='on' ref={ref} {...rest} type={isShowIcon ? 'text' : 'password'} />}	
 
 				{type==='password' ? 
 
