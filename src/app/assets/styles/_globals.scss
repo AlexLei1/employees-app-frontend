@@ -8,20 +8,10 @@ body {
 	color: $white-color;
 }
 
-.wrapper {
-	margin: 0px auto;
-	width: 100%;
+section {
+	margin: 0 auto;
 	max-width: 1000px;
-	min-height: 100vh;
-	transition: $transition;
-	padding:  67px 50px 0px 50px;
-
-	@include desktopM {
-		padding:  55px 50px 0px 50px;
-	}
-	@include tabletL {
-		padding:  55px 15px 0px 15px;
-	}
+	padding: 100px 0;
 }
 
 .container {

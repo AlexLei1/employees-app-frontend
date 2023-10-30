@@ -1,8 +1,8 @@
 
 import { createSlice } from "@reduxjs/toolkit";
 import { employeesApi } from './employees.endpoints';
-import { RootState } from "../../store";
-import { Employee } from './../../../types/employees.type';
+import { Employee } from '@/types/employees.type';
+import { RootState } from '@/store/store';
 
 interface InitialState {
   employees: Employee[] | null;
