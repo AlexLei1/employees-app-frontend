@@ -10,6 +10,8 @@ import { FC, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useSelector } from 'react-redux'
 import styles from './login.module.scss'
+import  Link  from 'next/link';
+
 interface ILogin{
 	email: string
 	password: string
@@ -54,13 +56,13 @@ const Login: FC = () => {
 		<section className={styles.loginPage}>
 
 			<div>
-				<h4>
+				<h1>
 					Войдите
-				</h4> 
+				</h1> 
 				<form onSubmit={ handleSubmit(onSubmit)}>
 					<Field 
 						{...registerInput("email", {
-							required: 'Введите email',
+							required: true,
 							pattern: {
 								value: validEmail,
 								message: 'Введите существующий email'
@@ -84,9 +86,18 @@ const Login: FC = () => {
 					<Button>
 						send
 					</Button>
+
+					<div>
+						<span>Нет аккаунта?</span>
+						<Link href='/register'>Зарегистрируйтесь</Link>
+					</div>
+
 				</form>
+				
+				
+				<ErrorMassage message={error}/>
 			</div>
-			<ErrorMassage message={error}/>
+			
 		</section>
 	)
 }

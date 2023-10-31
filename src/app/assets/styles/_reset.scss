@@ -13,9 +13,10 @@ html, body, div, span, object, iframe, figure, h1, h2, h3, h4, h5, h6, p, blockq
 	-webkit-font-smoothing: antialiased;
 	text-size-adjust: none;
 }
-// button {
-// 	border-style: none;
-// }
+
+button {
+	border-style: none;
+}
 
 footer, header, nav, section, main{
 	display: block;
@@ -44,6 +45,16 @@ table{
 }
 
 input{
-	-webkit-appearance: none;
-	border-radius: 0;
+	all: unset;
+	box-sizing: border-box;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #ffffff;
+    transition: background-color 5000s ease-in-out 0s;
+    box-shadow: inset 0 0 20px 20px #23232329;
 }
