@@ -1,35 +1,6 @@
 .filed {
 	position: relative;
 	margin-bottom: 30px;
-	
-	> .input {
-		width: 100%;
-		padding: 10px;
-		font-size: 16px;
-		color: white;
-		background-color: transparent;
-		border: 1px solid rgb(75, 75, 75);
-		border-radius: 5px;
-		transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-		
-
-		&::placeholder {
-			font-weight: 100;
-			color:#f5f5f5;
-			opacity: .4;
-		}
-		
-		&:focus {
-      outline: 0;
-      box-shadow: 0 0 0 4px rgba(158, 158, 158, 0.25);
-		}
-
-		&:disabled{
-			background-color: #f5f5f5;
-      opacity: 1;
-		}
-	}
-
 
 	> span {
 		position: absolute;

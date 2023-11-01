@@ -17,6 +17,11 @@
 	&:active {
 		background-color: #00519c;
 	}
+
+	&:disabled {
+		background-color: #005aad;
+		opacity: .5;
+	}
 }
 
 

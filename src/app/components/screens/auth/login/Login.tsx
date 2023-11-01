@@ -23,10 +23,11 @@ const Login: FC = () => {
 	const {
 		register: registerInput, 
 		handleSubmit,
-		formState: {errors},
+		formState: {errors, dirtyFields, isValid},
 		reset,
 	} = useForm<ILogin>({mode: 'onChange'})
 
+	
 	const [error, setError] = useState('')
 	const user = useSelector(selectUser) // текущее состояние пользователя
 	const [loginUser, loginUserResult] = useLoginMutation();
@@ -62,15 +63,17 @@ const Login: FC = () => {
 				<form onSubmit={ handleSubmit(onSubmit)}>
 					<Field 
 						{...registerInput("email", {
-							required: true,
+							required: 'Введите email',
 							pattern: {
 								value: validEmail,
 								message: 'Введите существующий email'
-							}
+							},
+							
 						})}
 						type="email" 
 						placeholder='Email'
 						error={errors.email} 
+						dirty={dirtyFields.email}
 					/>
 					<Field 
 						{...registerInput("password", {
@@ -82,8 +85,9 @@ const Login: FC = () => {
 						type="password" 
 						placeholder='Password'
 						error={errors.password} 
+						dirty={dirtyFields.password}
 					/>
-					<Button>
+					<Button isValid={isValid}>
 						send
 					</Button>
 
@@ -93,11 +97,8 @@ const Login: FC = () => {
 					</div>
 
 				</form>
-				
-				
-				<ErrorMassage message={error}/>
 			</div>
-			
+			<ErrorMassage message={error}/>
 		</section>
 	)
 }
