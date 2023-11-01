@@ -1,14 +1,14 @@
 import { FC } from 'react'
 
-type IErrorMessage = {
-	message?: string
+interface IErrorMessage {
+	message: string
 }
 
-const ErrorMassage: FC = ({message}:IErrorMessage) => {
+const ErrorMassage: FC<IErrorMessage> = ({message}) => {
 	if (!message) {
 		return null
 	}
-	return (<span>{message}</span>)
+	return (<span style={{color: 'red', padding: '20px'}}>{message}</span>)
 }
 
 export default ErrorMassage
