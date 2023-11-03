@@ -27,5 +27,4 @@ export const endpointsSlice = createSlice({
 });
 
 export const {reducer} = endpointsSlice
-
 export const selectEmployees = (state: RootState) => state.employees.employees;
