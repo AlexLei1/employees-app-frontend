@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { TypeComponentAuthFields } from '@/types/auth.type'
-import { useCurrentQuery } from '@/store/api/auth/auth.endpoints'
+import { useCurrentQuery } from '@/store/api/auth/auth.api'
 
 const AuthProvider: FC<TypeComponentAuthFields> = ({children}) => {
 	const {isLoading} = useCurrentQuery()
