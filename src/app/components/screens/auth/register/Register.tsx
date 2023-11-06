@@ -17,7 +17,6 @@ const Register: FC = () => {
 		handleSubmit,
 		formState: {errors, dirtyFields, isValid},
 		reset,
-		watch,
 	} = useForm<Register>({mode: 'onChange'})
 
 
