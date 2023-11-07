@@ -41,11 +41,9 @@ export const useLogin = () => {
 
 	//принимает данные полей из формы для отправки на сервер
 	const onSubmit:SubmitHandler<ILogin> = (data) => {
-		console.log(data)
+		login(data)
 		reset()
 	}
-
-	
 
 	return {registerInput, handleSubmit, error, errors, dirtyFields, isValid, onSubmit }
 }

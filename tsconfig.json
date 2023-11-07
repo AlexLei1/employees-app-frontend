@@ -30,6 +30,7 @@
 		"@/assets/*": ["app/assets/*"],
 		"@/configs/*": ["app/configs/*"],
 		"@/store/*": ["app/store/*"],
+		"@/provider/*": ["app/providers/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

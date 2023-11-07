@@ -5,27 +5,12 @@ import Field from '@/components/ui/form-elements/Field';
 import Button from '@/components/ui/button/Button';
 import styles from './register.module.scss'
 import Link from 'next/link';
-interface Register {
-	name: string
-	email: string
-	password: string
-}
+import { useRegister } from './useRegister';
+
 const Register: FC = () => {
 
-	const {
-		register: registerInput,
-		handleSubmit,
-		formState: {errors, dirtyFields, isValid},
-		reset,
-	} = useForm<Register>({mode: 'onChange'})
 
-
-	const onSubmit:SubmitHandler<Register> = (data) => {
-		console.log(data)
-		reset()
-	}
-
-
+	const {registerInput, handleSubmit, error, errors, dirtyFields, isValid, onSubmit} = useRegister()
 
 	return (
 		<section className={styles.registerPage}>
@@ -69,7 +54,7 @@ const Register: FC = () => {
 						error={errors.password} 
 						dirty={dirtyFields.password}
 					/>
-					<Button >
+					<Button isValid={isValid}>
 						send
 					</Button>
 

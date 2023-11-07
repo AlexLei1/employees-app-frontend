@@ -5,18 +5,24 @@ import {MaterialIcon} from '@/ui/icons/MaterialIcon'
 import { dataLink } from './header.data'
 import cn from 'classnames'
 import { useRouter } from 'next/router';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout, selectUser } from '@/store/api/auth/auth.slice'
+import Cookies from 'js-cookie';
 
 
 const Header: FC = () => {
-	
-const { asPath } = useRouter()
-	// const logoutHandler = (e: MouseEvent<HTMLAnchorElement>) => {
-	// 	e.preventDefault()
-	// 	logout()
-	// }
-	
-	
 
+const user = useSelector(selectUser);
+const { asPath } = useRouter()
+const dispatch = useDispatch();
+const router = useRouter()
+
+const onLogoutClick = () => {
+	dispatch(logout());
+	Cookies.remove("token");
+};
+	
+	
 	return (
 		<header className={styles.header}>
 			<div>
@@ -27,8 +33,8 @@ const { asPath } = useRouter()
 			</div> 
 			
 			
-			{false ? 
-				<a onClick={() => console.log('logout')}>
+			{user ? 
+				<a onClick={() => onLogoutClick()}>
 					<MaterialIcon name={'MdRefresh'}/>
 					<span>logout</span>
 				</a>

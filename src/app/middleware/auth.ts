@@ -1,5 +1,6 @@
 import { createListenerMiddleware } from '@reduxjs/toolkit'
 import { authApi } from '../store/api/auth/auth.api';
+import  Cookies  from 'js-cookie';
 
 // создали переменую с вызовом функции
 export const listenerMiddleware = createListenerMiddleware()
@@ -10,7 +11,7 @@ listenerMiddleware.startListening({
     listenerApi.cancelActiveListeners() 
 
     if (action.payload.token) {
-    	localStorage.setItem('token', action.payload.token);
+    	Cookies.set('token', action.payload.token)
     }
   },
 })
