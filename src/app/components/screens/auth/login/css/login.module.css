@@ -1,0 +1,30 @@
+.loginPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  max-width: 500px;
+}
+.loginPage > div {
+  border: 1px solid rgb(75, 75, 75);
+  border-radius: 5px;
+}
+.loginPage > div > h1 {
+  font-size: 15px;
+  font-weight: 700;
+  border-bottom: 1px solid rgb(75, 75, 75);
+  padding: 20px;
+}
+.loginPage > div > form {
+  padding: 16px;
+}
+.loginPage > div > form > div {
+  margin: 20px 0px;
+}
+.loginPage > div > form > div > span {
+  margin-right: 5px;
+}
+.loginPage > div > form > div > a {
+  text-decoration: none;
+  color: rgb(71, 71, 199);
+}

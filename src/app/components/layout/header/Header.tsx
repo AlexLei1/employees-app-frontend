@@ -42,11 +42,11 @@ const onLogoutClick = () => {
 				<ul>
 					{dataLink.map((link) => (
 						<li key={link.id}>
-								<Link className={cn({[styles.active]: asPath === link.path})} href={link.path}>
-									<MaterialIcon name={link.icon}/>
-									<span>{link.text}</span>
-								</Link>
-							</li>
+							<Link className={cn({[styles.active]: asPath === link.path})} href={link.path}>
+								<MaterialIcon name={link.icon}/>
+								<span>{link.text}</span>
+							</Link>
+						</li>
 					))}
 				</ul>}
 

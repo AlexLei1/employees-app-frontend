@@ -6,3 +6,10 @@ export interface Employee {
 	address: string;
 	userId: string;
 }
+
+export interface IAddEmployee {
+	firstName: string;
+	lastName: string;
+	age: string;
+	address: string;
+}

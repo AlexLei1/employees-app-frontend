@@ -1,7 +1,6 @@
 import { useRouter } from 'next/router'
 import { FC } from 'react'
 import { TypeComponentAuthFields } from '@/types/auth.type'
-import { useAuth } from '@/hooks/useAuth'
 import { useSelector } from 'react-redux'
 import { selectUser } from '@/store/api/auth/auth.slice'
 

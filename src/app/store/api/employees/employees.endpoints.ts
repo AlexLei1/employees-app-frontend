@@ -1,5 +1,5 @@
 
-import { Employee } from '@/types/employees.type';
+import { Employee, IAddEmployee } from '@/types/employees.type';
 import { api } from './../api';
 
 
@@ -32,7 +32,7 @@ export const employeesApi = api.injectEndpoints({
         body: { id },
       }),
     }),
-    addEmployee: builder.mutation<Employee, Employee>({
+    addEmployee: builder.mutation<Employee, IAddEmployee>({
       query: (employee) => ({
         url: "/employees/add",
         method: "POST",
