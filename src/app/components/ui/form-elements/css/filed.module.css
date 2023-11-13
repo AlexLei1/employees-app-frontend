@@ -1,0 +1,15 @@
+.filed {
+  position: relative;
+  margin-bottom: 30px;
+}
+.filed > span {
+  position: absolute;
+  top: 13px;
+  right: 13px;
+  display: inline-block;
+}
+.filed > div {
+  margin-top: 5px;
+  position: absolute;
+  font-size: 14px;
+}

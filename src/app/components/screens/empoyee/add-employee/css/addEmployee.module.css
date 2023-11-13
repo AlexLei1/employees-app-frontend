@@ -1,0 +1,30 @@
+.addPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  max-width: 500px;
+}
+.addPage > div {
+  border: 1px solid rgb(75, 75, 75);
+  border-radius: 5px;
+}
+.addPage > div > h1 {
+  font-size: 15px;
+  font-weight: 700;
+  border-bottom: 1px solid rgb(75, 75, 75);
+  padding: 20px;
+}
+.addPage > div > form {
+  padding: 16px;
+}
+.addPage > div > form > div {
+  margin: 20px 0px;
+}
+.addPage > div > form > div > span {
+  margin-right: 5px;
+}
+.addPage > div > form > div > a {
+  text-decoration: none;
+  color: rgb(71, 71, 199);
+}

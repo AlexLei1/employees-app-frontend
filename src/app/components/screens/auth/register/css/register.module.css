@@ -1,0 +1,30 @@
+.registerPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  max-width: 500px;
+}
+.registerPage > div {
+  border: 1px solid rgb(75, 75, 75);
+  border-radius: 5px;
+}
+.registerPage > div > h1 {
+  font-size: 15px;
+  font-weight: 700;
+  border-bottom: 1px solid rgb(75, 75, 75);
+  padding: 20px;
+}
+.registerPage > div > form {
+  padding: 16px;
+}
+.registerPage > div > form > div {
+  margin: 20px 0px;
+}
+.registerPage > div > form > div > span {
+  margin-right: 5px;
+}
+.registerPage > div > form > div > a {
+  text-decoration: none;
+  color: rgb(71, 71, 199);
+}

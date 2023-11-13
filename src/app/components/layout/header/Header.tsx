@@ -1,22 +1,23 @@
-import { FC, MouseEvent, forwardRef } from 'react'
+import { FC		 } from 'react'
 import styles from './header.module.scss'
 import Link from 'next/link'
 import {MaterialIcon} from '@/ui/icons/MaterialIcon'
 import { dataLink } from './header.data'
-import cn from 'classnames'
 import { useRouter } from 'next/router';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUser } from '@/store/api/auth/auth.slice'
+
+import HeaderLink from './header-link/HeaderLink'
 
 
 const Header: FC = () => {
-	
-const { asPath } = useRouter()
-	// const logoutHandler = (e: MouseEvent<HTMLAnchorElement>) => {
-	// 	e.preventDefault()
-	// 	logout()
-	// }
-	
-	
 
+const user = useSelector(selectUser);
+const dispatch = useDispatch();
+const router = useRouter()
+
+
+	
 	return (
 		<header className={styles.header}>
 			<div>
@@ -27,20 +28,14 @@ const { asPath } = useRouter()
 			</div> 
 			
 			
-			{false ? 
-				<a onClick={() => console.log('logout')}>
-					<MaterialIcon name={'MdRefresh'}/>
-					<span>logout</span>
-				</a>
+			{user ? 
+				<HeaderLink path={'./login'} icon={'MdRefresh'} text={'logout'}/> 
 				:	
 				<ul>
 					{dataLink.map((link) => (
 						<li key={link.id}>
-								<Link className={cn({[styles.active]: asPath === link.path})} href={link.path}>
-									<MaterialIcon name={link.icon}/>
-									<span>{link.text}</span>
-								</Link>
-							</li>
+							<HeaderLink path={link.path} icon={link.icon} text={link.text}/>
+						</li>
 					))}
 				</ul>}
 

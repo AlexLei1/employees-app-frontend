@@ -1,0 +1,21 @@
+.button {
+  text-align: center;
+  background-color: #0077e7;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 8px 15px;
+  margin-top: 20px;
+  border-radius: 6px;
+  color: white;
+  transition: ease-in-out 0.15s;
+}
+.button:hover {
+  background-color: #005aad;
+}
+.button:active {
+  background-color: #00519c;
+}
+.button:disabled {
+  background-color: #005aad;
+  opacity: 0.5;
+}

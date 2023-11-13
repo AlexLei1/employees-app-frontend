@@ -28,27 +28,6 @@
 		
 		li {
 			margin-left: 20px;
-
-			a {
-				color: white;
-				opacity: .6;
-				text-decoration: none;
-				display: flex;
-				line-height: 12px;
-				span {
-					margin-left: 5px;
-				}
-
-				&:hover {
-					opacity: 1;
-					transition: ease-in-out .2s;
-				}
-			}
-
-			.active {
-				color: rgb(52, 145, 199);
-				opacity: 1;
-			}
 		}
 	}
 }
