@@ -8,8 +8,6 @@ import dynamic from 'next/dynamic';
 const DynamicCheckRole = dynamic(() => import('./CheckRole'), { ssr: false })
 
 const AuthProvider: FC<TypeComponentAuthFields> = ({children, Component: {isOnlyUser}}) => {
-	const {isLoading, error} = useCurrentQuery()
-	const user = useSelector(selectUser)
 
 
 	return !isOnlyUser ? (
