@@ -22,13 +22,12 @@ const HeaderLink: FC<IHeaderLink> = ({path, icon, text}) => {
 	const { asPath } = useRouter()
 
 	const onLogoutClick = () => {
-		console.log(true)
 		dispatch(logout());
 		Cookies.remove("token");
 	};
 
 	return (
-		<Link className={cn(styles.link, {[styles.active]: asPath === path})} onClick={() => onLogoutClick()} href={path}>
+		<Link className={cn(styles.link, {[styles.active]: asPath === path})} onClick={text === 'logout' ? () => onLogoutClick() : undefined} href={path}>
 			<MaterialIcon name={icon}/>
 			<span>{text}</span>
 		</Link>

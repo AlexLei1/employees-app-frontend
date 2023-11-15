@@ -12,12 +12,8 @@ import HeaderLink from './header-link/HeaderLink'
 
 const Header: FC = () => {
 
-const user = useSelector(selectUser);
-const dispatch = useDispatch();
-const router = useRouter()
+const user = useSelector(selectUser)
 
-
-	
 	return (
 		<header className={styles.header}>
 			<div>
@@ -26,8 +22,6 @@ const router = useRouter()
 					<h1>Сотрудники</h1>
 				</Link>
 			</div> 
-			
-			
 			{user ? 
 				<HeaderLink path={'./login'} icon={'MdRefresh'} text={'logout'}/> 
 				:	

@@ -1,0 +1,16 @@
+.tableHeader {
+	width: 100%;
+	background-color: rgba(128, 128, 128, 0.247);
+	color: white;
+	display: grid;
+	grid-template-columns: 33% 33% 33%;
+	justify-items: start;
+	border-bottom: 1px solid rgb(95, 95, 95);
+	padding: 10px;
+	border-radius: 5px 5px 0px 0px;
+
+	span {
+		border-left: 1px solid rgb(95, 95, 95);
+		padding-left: 5px;
+	}
+}

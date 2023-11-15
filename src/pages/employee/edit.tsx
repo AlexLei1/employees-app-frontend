@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-const edit: FC = () => {
+const eci: FC = () => {
 
 }
 
