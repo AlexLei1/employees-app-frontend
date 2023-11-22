@@ -4,11 +4,13 @@ import Link from 'next/link'
 import { FC } from 'react'
 import { useSelector } from 'react-redux'
 import styles from './tableList.module.scss'
+import { selectUser } from '@/store/api/auth/auth.slice'
 
 const TableList: FC = () => {
 
 	const {isLoading} = useGetAllEmployeesQuery()
 	const employees = useSelector(selectEmployees)
+	const user = useSelector(selectUser)
 	return (
 
 		<>

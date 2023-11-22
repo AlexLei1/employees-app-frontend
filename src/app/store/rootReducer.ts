@@ -8,3 +8,4 @@ export const reducers = combineReducers({
 	auth: authReducer,
 	employees: endpointsSlice
 })
+

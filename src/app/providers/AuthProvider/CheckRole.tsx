@@ -12,7 +12,6 @@ const CheckRole: FC<TypeComponentAuthFields> = ({children, Component: {isOnlyUse
 	const router = useRouter()
 	const Children = () => <>{children}</>
 
-	console.log(user)
 
 	if (user && isOnlyUser) return <Children />
 	else {

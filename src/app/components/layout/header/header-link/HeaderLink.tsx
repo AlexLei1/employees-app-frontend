@@ -8,6 +8,8 @@ import { TypeMaterialIconName } from '@/types/icons.types'
 import { useDispatch } from 'react-redux'
 import { logout } from '@/store/api/auth/auth.slice';
 import Cookies from 'js-cookie';
+import { logoutEm } from '@/store/api/employees/employees.slice'
+import { api } from '../../../../store/api/api'
 
 interface IHeaderLink {
 	path: string	
@@ -15,14 +17,14 @@ interface IHeaderLink {
 	text: string
 }
 
-
-
 const HeaderLink: FC<IHeaderLink> = ({path, icon, text}) => {
 	const dispatch = useDispatch()
 	const { asPath } = useRouter()
 
 	const onLogoutClick = () => {
 		dispatch(logout());
+		dispatch(logoutEm());
+		dispatch(api.util.resetApiState())
 		Cookies.remove("token");
 	};
 
