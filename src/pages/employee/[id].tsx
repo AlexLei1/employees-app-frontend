@@ -1,10 +1,10 @@
 
 import { NextPageAuth } from '@/types/auth.type'
-import EmployeeEdit from '@/components/screens/empoyee/edit-employee/EmployeeEdit'
+import Employee from '@/components/screens/empoyee/Employee'
 
-const EmployeeEditPage: NextPageAuth = () => {
-	return <EmployeeEdit/>
+const EditEmployeePage: NextPageAuth = () => {
+	return <Employee/>
 }
 
-EmployeeEditPage.isOnlyUser = true
-export default EmployeeEditPage
+EditEmployeePage.isOnlyUser = true
+export default EditEmployeePage

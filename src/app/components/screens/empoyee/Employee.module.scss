@@ -1,0 +1,57 @@
+.editEmployee {
+
+	&:first-child{
+
+		> div {
+			> div {
+				margin: 20px 0px
+			}
+		}
+
+		ul {
+			display: grid;
+			width: 100%;
+			grid-template-columns: 50% 50%;
+			border: 1px solid rgb(95, 95, 95);
+			border-radius: 5px;
+
+			li{
+				padding: 10px;
+			}
+			
+			li:nth-child(1) {
+				border-top-left-radius: 3px;
+				background-color: rgba(128, 128, 128, 0.247);
+				border-bottom: 1px solid rgb(95, 95, 95);
+			}
+			li:nth-child(2) {
+				border-bottom: 1px solid rgb(95, 95, 95);
+				border-left: 1px solid rgb(95, 95, 95);
+			}
+			li:nth-child(3) {
+				background-color: rgba(128, 128, 128, 0.247);
+				border-bottom: 1px solid rgb(95, 95, 95);
+			}
+			li:nth-child(4) {
+				border-bottom: 1px solid rgb(95, 95, 95);
+				border-left: 1px solid rgb(95, 95, 95);
+			}
+			li:nth-child(5) {
+				border-bottom-left-radius: 3px;
+				background-color: rgba(128, 128, 128, 0.247);
+			}
+			li:nth-child(6) {
+				border-left: 1px solid rgb(95, 95, 95);
+			}
+		}
+		
+	}
+
+	&:last-child {
+		> div {
+				 >&:last-child {
+					margin-left: 20px;
+				}
+		}
+	}
+}
