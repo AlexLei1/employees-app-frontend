@@ -64,7 +64,7 @@ const Login: FC = () => {
 						error={errors.password} 
 						dirty={dirtyFields.password}
 					/>
-					<Button isValid={isValid}>
+					<Button disabled={!isValid}>
 						send
 					</Button>
 

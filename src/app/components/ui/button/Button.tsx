@@ -1,15 +1,16 @@
 import {ButtonHTMLAttributes, FC} from 'react'
 import styles from './button.module.scss'
 
-export interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {isValid?: boolean}
+export interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {}
 
-const Button:FC<IButton> = ({children, isValid = false, ...rest}) => {
+const Button:FC<IButton> = ({children, ...rest}) => {
+
   return (
-	<>
-		<button disabled={!isValid} {...rest} className={styles.button}>
-			<span>{children}</span>
-		</button>
-	</>
+		<>
+			<button {...rest} className={styles.button}>
+				<span>{children}</span>
+			</button>
+		</>
   )
 }
 

@@ -1,8 +1,10 @@
 import AddEmployee from '@/components/screens/empoyee/add-employee/AddEmployee'
-import {FC} from 'react'
+import { NextPageAuth } from '@/types/auth.type'
 
-const add:FC = () => {
+const add:NextPageAuth = () => {
 	return <AddEmployee/>
 }
+
+add.isOnlyUser = true
 
 export default add
