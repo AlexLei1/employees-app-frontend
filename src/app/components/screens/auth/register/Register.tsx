@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { validEmail } from '@/utils/regex';
+import { validEmail, validPassword } from '@/utils/regex';
 import Field from '@/components/ui/form-elements/Field';
 import Button from '@/components/ui/button/Button';
 import styles from './register.module.scss'
@@ -10,13 +10,13 @@ import { useRegister } from './useRegister';
 const Register: FC = () => {
 
 
-	const {registerInput, handleSubmit, error, errors, dirtyFields, isValid, onSubmit} = useRegister()
+	const {registerInput, handleSubmit, error, errors, dirtyFields, isValid, onSubmit, watch} = useRegister()
 
 	return (
 		<section className={styles.registerPage}>
 			<div>
 				<h1>Зарегистрируйтесь</h1>
-					<form onSubmit={handleSubmit(onSubmit)}>
+				<form onSubmit={handleSubmit(onSubmit)}>
 					<Field 
 						{...registerInput("name", {
 							required: 'Введите имя', 
@@ -48,13 +48,29 @@ const Register: FC = () => {
 							minLength: {
 								value: 6, 
 								message: 'Минимальное число символов 6'
-						}})}
+							},
+							maxLength: {
+								value: 20,
+								message: 'Максимальное число символов 20 '
+							}
+						})}
 						type="password" 
 						placeholder='Password'
 						error={errors.password} 
 						dirty={dirtyFields.password}
 					/>
-					<Button isValid={isValid}>
+					<Field 
+						{...registerInput("confirmPassword", {
+							required: 'Повторно введите пароль',
+							validate: (value: string) => 
+								value === watch('password') || "Пароли не совпадают"
+							})}
+						type="password" 
+						placeholder='Сonfirm Password'
+						error={errors.confirmPassword} 
+						dirty={dirtyFields.password}
+					/>
+					<Button disabled={!isValid}>
 						send
 					</Button>
 

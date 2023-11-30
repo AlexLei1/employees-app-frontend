@@ -7,6 +7,7 @@ interface IRegister {
 	name: string
 	email: string
 	password: string
+	confirmPassword: string
 }
 
 
@@ -14,7 +15,8 @@ export const useRegister = () =>  {
 	const {
 		register: registerInput,
 		handleSubmit,
-		formState: {errors, dirtyFields, isValid },
+		formState: {errors, dirtyFields, isValid},
+		watch,
 		reset,
 	} = useForm<IRegister>({mode: 'onChange'})
 
@@ -38,9 +40,10 @@ export const useRegister = () =>  {
 	}
 
 	const onSubmit:SubmitHandler<IRegister> = (data) => {
-		register(data)
+		// register(data)
+		console.log(data)
 		reset()
 	}
 
-	return {registerInput, handleSubmit, error, errors, dirtyFields, isValid, onSubmit}
+	return {registerInput, handleSubmit, error, errors, dirtyFields, isValid, onSubmit, watch}
 }

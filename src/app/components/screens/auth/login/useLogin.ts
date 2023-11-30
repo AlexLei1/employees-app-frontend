@@ -12,6 +12,7 @@ interface ILogin{
 }
 
 export const useLogin = () => {
+	console.log('render')
 	const {
 		register: registerInput, 
 		handleSubmit,

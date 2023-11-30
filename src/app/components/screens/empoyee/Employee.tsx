@@ -39,7 +39,8 @@ const Employee: FC = () => {
 			
 			<div>
 				<Title size={'18'} text={'Информация о сотруднике'}/>
-				<ul >
+				<div>1</div>
+				<ul>
 					<li>Имя</li>
 					<li>{data?.firstName}</li>
 					<li>Возраст</li>
@@ -50,8 +51,10 @@ const Employee: FC = () => {
 			</div>
 
 			{isCurrentUser ? 
-				<div>
-					<SubTitle size={'16'} text={'Редактировать'}/>
+				<div className={styles.wrapperEditCurrentButton}>
+					<div>
+						<SubTitle size={'16'} text={'Редактировать'}/>
+					</div>
 					<div>
 						<Button onClick={() => replace(`/employee/edit/${employeeId}`)}>
 							Редактировать
@@ -60,6 +63,12 @@ const Employee: FC = () => {
 							Удалить
 						</Button>
 					</div>
+					<ul>
+					<li>1</li>
+					<li>1</li>
+					<li>1</li>
+					<li>1</li>
+					</ul>
 				</div>
 			: null}
 
