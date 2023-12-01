@@ -1,52 +1,63 @@
-.editEmployee {
+.employee {
 
-	:first-child{	
-		
-		ul {
-			display: grid;
-			width: 100%;
-			grid-template-columns: 50% 50%;
-			border: 1px solid rgb(95, 95, 95);
-			border-radius: 5px;
+	.wrapperInfo {
+		display: flex;
+		flex-direction: column;
 
-			li{
-				padding: 10px;
-			}
-			
-			li:nth-child(1) {
-				border-top-left-radius: 3px;
-				background-color: rgba(128, 128, 128, 0.247);
-				border-bottom: 1px solid rgb(95, 95, 95);
-			}
-			li:nth-child(2) {
-				border-bottom: 1px solid rgb(95, 95, 95);
-				border-left: 1px solid rgb(95, 95, 95);
-			}
-			li:nth-child(3) {
-				background-color: rgba(128, 128, 128, 0.247);
-				border-bottom: 1px solid rgb(95, 95, 95);
-			}
-			li:nth-child(4) {
-				border-bottom: 1px solid rgb(95, 95, 95);
-				border-left: 1px solid rgb(95, 95, 95);
-			}
-			li:nth-child(5) {
-				border-bottom-left-radius: 3px;
-				background-color: rgba(128, 128, 128, 0.247);
-			}
-			li:nth-child(6) {
-				border-left: 1px solid rgb(95, 95, 95);
+		div:first-child {
+			margin-bottom: 20px
+		}
+	}
+
+	
+	.wrapperEdit {
+		div:first-child {
+			margin: 20px 0px;
+		}
+
+		div:last-child {
+			button:nth-child(2) {
+				margin-left: 10px;
 			}
 		}
-		
 	}
-	// .wrapperEditCurrentButton {
-	
-	// }
-	:last-child {
 
-		div {
-			
+
+
+	ul {
+		display: grid;
+		width: 100%;
+		grid-template-columns: 50% 50%;
+		border: 1px solid rgb(95, 95, 95);
+		border-radius: 5px;
+
+		li{
+			padding: 10px;
+		}
+		
+		li:nth-child(1) {
+			border-top-left-radius: 3px;
+			background-color: rgba(128, 128, 128, 0.247);
+			border-bottom: 1px solid rgb(95, 95, 95);
+		}
+		li:nth-child(2) {
+			border-bottom: 1px solid rgb(95, 95, 95);
+			border-left: 1px solid rgb(95, 95, 95);
+		}
+		li:nth-child(3) {
+			background-color: rgba(128, 128, 128, 0.247);
+			border-bottom: 1px solid rgb(95, 95, 95);
+		}
+		li:nth-child(4) {
+			border-bottom: 1px solid rgb(95, 95, 95);
+			border-left: 1px solid rgb(95, 95, 95);
+		}
+		li:nth-child(5) {
+			border-bottom-left-radius: 3px;
+			background-color: rgba(128, 128, 128, 0.247);
+		}
+		li:nth-child(6) {
+			border-left: 1px solid rgb(95, 95, 95);
 		}
 	}
 }
