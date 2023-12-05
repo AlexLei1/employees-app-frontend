@@ -1,16 +1,17 @@
 import { useGetAllEmployeesQuery } from '@/store/api/employees/employees.endpoints'
 import { selectEmployees } from '@/store/api/employees/employees.slice'
 import Link from 'next/link'
-import { FC } from 'react'
+import { FC,useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import styles from './tableList.module.scss'
 import { selectUser } from '@/store/api/auth/auth.slice'
 
 const TableList: FC = () => {
-
+	useEffect(()=>{
+    console.log('rendered table list!!!')
+	},[])
 	const {isLoading} = useGetAllEmployeesQuery()
 	const employees = useSelector(selectEmployees)
-	const user = useSelector(selectUser)
 	return (
 
 		<>

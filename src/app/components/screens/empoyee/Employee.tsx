@@ -35,11 +35,10 @@ const Employee: FC = () => {
   };
 
 	return (
-		<section className={styles.editEmployee}>
-			
-			<div>
+		<section className={styles.employee}>
+			<div className={styles.wrapperInfo}>
 				<Title size={'18'} text={'Информация о сотруднике'}/>
-				<ul >
+				<ul>
 					<li>Имя</li>
 					<li>{data?.firstName}</li>
 					<li>Возраст</li>
@@ -50,8 +49,11 @@ const Employee: FC = () => {
 			</div>
 
 			{isCurrentUser ? 
-				<div>
-					<SubTitle size={'16'} text={'Редактировать'}/>
+				<div className={styles.wrapperEdit}>
+					<div>
+						<SubTitle size={'16'} text={'Редактировать'}/>
+					</div>
+
 					<div>
 						<Button onClick={() => replace(`/employee/edit/${employeeId}`)}>
 							Редактировать

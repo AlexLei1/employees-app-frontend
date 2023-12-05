@@ -11,19 +11,26 @@ import { useSelector } from 'react-redux';
 
 
 export const useEditEmployee = () => {
+	const {query, replace} = useRouter()
+	const employeeId = String(query.id)
+	const { data, isLoading } = useGetEmployeeQuery(employeeId || "");
+	const [error, setError] = useState('')
+	const user = useSelector(selectUser)
+	const [editEmployee] = useEditEmployeeMutation();
+
 	const {
 		register: registerInput, 
 		handleSubmit,
 		formState: {errors, dirtyFields, isValid},
+		setValue,
 		reset,
-	} = useForm<IAddEmployee>({mode: 'onChange'})
-
-	const {query} = useRouter()
-	const employeeId = String(query.id)
-	const [error, setError] = useState('')
-	const user = useSelector(selectUser)
-	const { data, isLoading } = useGetEmployeeQuery(employeeId || "");
-	const [editEmployee] = useEditEmployeeMutation();
+	} = useForm<IAddEmployee>({mode: 'onChange', 
+	defaultValues: {
+		firstName: data?.firstName,
+		lastName: data?.lastName,
+		age: data?.age,
+		address: data?.address,
+	},})
 
 	const edit = async (employee: Employee) => {
     try {
@@ -31,6 +38,7 @@ export const useEditEmployee = () => {
 				...data,
 				...employee
 			}
+			console.log(editedEmployee)
       await editEmployee(editedEmployee).unwrap();
 
     } catch (err) {
@@ -45,9 +53,9 @@ export const useEditEmployee = () => {
   };
 
 	//принимает данные полей из формы для отправки на сервер
-	const onSubmit:SubmitHandler<IAddEmployee> = (data) => {
+	const onSubmit:SubmitHandler<Employee> = (data) => {
 		edit(data)
-		reset()
+		replace('/')
 	}
 
 	return {registerInput, handleSubmit, error, errors, dirtyFields, isValid, onSubmit }

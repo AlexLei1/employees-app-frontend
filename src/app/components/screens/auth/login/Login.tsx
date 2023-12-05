@@ -6,7 +6,7 @@ import { useLoginMutation } from '@/store/api/auth/auth.api'
 import { selectUser } from '@/store/api/auth/auth.slice'
 import { isErrorWithMessage } from '@/utils/check.error'
 import { validEmail } from '@/utils/regex'
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useSelector } from 'react-redux'
 import styles from './login.module.scss'
@@ -24,7 +24,7 @@ const Login: FC = () => {
 	const {
 		registerInput, 
 		handleSubmit, 
-		error, 
+		logErr, 
 		errors, 
 		dirtyFields, 
 		isValid, 
@@ -35,7 +35,7 @@ const Login: FC = () => {
 
 			<div>
 				<h1>
-					Войдите
+					Авторизируйтесь
 				</h1> 
 				<form onSubmit={ handleSubmit(onSubmit)}>
 					<Field 
@@ -72,10 +72,10 @@ const Login: FC = () => {
 						<span>Нет аккаунта?</span>
 						<Link href='/register'>Зарегистрируйтесь</Link>
 					</div>
-
+					<ErrorMassage message={logErr}/>
 				</form>
 			</div>
-			<ErrorMassage message={error}/>
+
 		</section>
 	)
 }

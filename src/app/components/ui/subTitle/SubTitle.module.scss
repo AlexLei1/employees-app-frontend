@@ -1,4 +1,27 @@
 .subTitle {
-
-
+position: relative;
+padding: 0px 40px;
+	&:after {
+		content: '';
+		display: block;
+		position: absolute;
+		left: 0;
+		bottom: 6px;
+		width: 30px;
+		height: 1px;
+		margin: 0 auto;
+		background-color: rgb(255, 255, 255);
+	}
+	&:before {
+		content: '';
+		display: block;
+		position: absolute;
+		left: 160px;
+		bottom: 6px;
+		width: 150px;
+		height: 1px;
+		margin: 0 auto;
+		background-color: rgb(255, 255, 255);
+	}
+	
 }

@@ -20,7 +20,7 @@ export const useLogin = () => {
 	} = useForm<ILogin>({mode: 'onChange'})
 
 	
-	const [error, setError] = useState('')
+	const [logErr, setLogErr] = useState('')
 	const user = useSelector(selectUser) // текущее состояние пользователя
 	const [loginUser] = useLoginMutation();
 
@@ -32,9 +32,9 @@ export const useLogin = () => {
       const maybeError = isErrorWithMessage(err);
 
       if (maybeError) {
-        setError(err.data.message);
+        setLogErr(err.data.message);
       } else {
-        setError("Неизвестная ошибка");
+        setLogErr("Неизвестная ошибка");
       }
     }
   };
@@ -45,5 +45,5 @@ export const useLogin = () => {
 		reset()
 	}
 
-	return {registerInput, handleSubmit, error, errors, dirtyFields, isValid, onSubmit }
+	return {registerInput, handleSubmit, logErr, errors, dirtyFields, isValid, onSubmit }
 }
