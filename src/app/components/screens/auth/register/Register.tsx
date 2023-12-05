@@ -6,11 +6,17 @@ import Button from '@/components/ui/button/Button';
 import styles from './register.module.scss'
 import Link from 'next/link';
 import { useRegister } from './useRegister';
+import ErrorMassage from '@/components/ui/error-message/ErrorMassage';
 
 const Register: FC = () => {
-
-
-	const {registerInput, handleSubmit, error, errors, dirtyFields, isValid, onSubmit, watch} = useRegister()
+	const {registerInput, 
+					handleSubmit, 
+					regErr, 
+					errors, 
+					dirtyFields, 
+					isValid, 
+					onSubmit, 
+					watch} = useRegister()
 
 	return (
 		<section className={styles.registerPage}>
@@ -76,10 +82,11 @@ const Register: FC = () => {
 
 					<div>
 						<span>Нет аккаунта?</span>
-						<Link href='/login'>Войдите</Link>
+						<Link href='/login'>Register</Link>
 					</div>
-
+					<ErrorMassage message={regErr}/>
 				</form>
+			
 			</div>
 		</section>
 	)

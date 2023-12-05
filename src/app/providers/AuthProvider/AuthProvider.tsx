@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import { TypeComponentAuthFields } from '@/types/auth.type'
 import { useCurrentQuery } from '@/store/api/auth/auth.api'
 import { useSelector } from 'react-redux'
@@ -10,7 +10,7 @@ const DynamicCheckRole = dynamic(() => import('./CheckRole'), { ssr: false })
 const AuthProvider: FC<TypeComponentAuthFields> = ({children, Component: {isOnlyUser}}) => {
 	useCurrentQuery()
 
-	return !isOnlyUser ? (
+	return !isOnlyUser || !!undefined ? (
 		<>{children}</>
 	) : (
 		<DynamicCheckRole Component={{ isOnlyUser }}>

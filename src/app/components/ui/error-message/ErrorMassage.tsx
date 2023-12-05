@@ -1,5 +1,5 @@
 import { FC } from 'react'
-
+import styles from './ErrorMassage.module.scss'
 interface IErrorMessage {
 	message: string
 }
@@ -7,8 +7,7 @@ interface IErrorMessage {
 const ErrorMassage: FC<IErrorMessage> = ({message}) => {
 	if (!message) {
 		return null
-	}
-	return (<span style={{color: 'red', padding: '20px'}}>{message}</span>)
+	} return (<span className={styles.errorMassage}>{message}</span>)
 }
 
 export default ErrorMassage

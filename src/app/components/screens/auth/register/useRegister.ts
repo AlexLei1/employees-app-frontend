@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useRegisterMutation } from "@/store/api/auth/auth.api"
 import { isErrorWithMessage } from "@/utils/check.error"
 import { SubmitHandler, useForm } from "react-hook-form"
@@ -20,7 +20,7 @@ export const useRegister = () =>  {
 		reset,
 	} = useForm<IRegister>({mode: 'onChange'})
 
-	const [error, setError] = useState('')
+	const [regErr, setRegError] = useState('')
 	const [registerUser] = useRegisterMutation()
 
 
@@ -28,22 +28,21 @@ export const useRegister = () =>  {
 		try {
 			await registerUser(data).unwrap()
 
-		} catch(err) {
-			const maybeError = isErrorWithMessage(err)
+		} catch(error) {
+			const maybeError = isErrorWithMessage(error)
 
 			if (maybeError) {
-				setError(err.data.message)
+				setRegError(error.data.message)
 			} else {
-				setError("Неизвестная ошибка");
+				setRegError("Неизвестная ошибка");
 			}
 		}
 	}
 
 	const onSubmit:SubmitHandler<IRegister> = (data) => {
-		// register(data)
-		console.log(data)
+		register(data)
 		reset()
 	}
 
-	return {registerInput, handleSubmit, error, errors, dirtyFields, isValid, onSubmit, watch}
+	return {registerInput, handleSubmit, regErr, errors, dirtyFields, isValid, onSubmit, watch}
 }
