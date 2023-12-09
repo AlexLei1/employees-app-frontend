@@ -14,7 +14,6 @@ const CheckRole: FC<TypeComponentAuthFields> = ({children, Component: {isOnlyUse
 		router.pathname !== '/login' && router.replace('/login')
 		return null
 	}
-
 }
 
 export default CheckRole

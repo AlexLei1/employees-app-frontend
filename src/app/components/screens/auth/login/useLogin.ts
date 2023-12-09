@@ -1,8 +1,9 @@
 
 import { useLoginMutation } from '@/store/api/auth/auth.api';
 import { selectUser } from '@/store/api/auth/auth.slice';
+import { saveToStorage } from '@/utils/auth.helper';
 import { isErrorWithMessage } from '@/utils/check.error';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 
@@ -21,13 +22,12 @@ export const useLogin = () => {
 
 	
 	const [logErr, setLogErr] = useState('')
-	const user = useSelector(selectUser) // текущее состояние пользователя
-	const [loginUser] = useLoginMutation();
+	const [loginUser, {data}] = useLoginMutation();
 
-	const login = async (data: ILogin) => {
+	const login = async (loginData: ILogin) => {
     try {
-      await loginUser(data).unwrap();
-
+      await loginUser(loginData).unwrap();
+			saveToStorage(data)
     } catch (err) {
       const maybeError = isErrorWithMessage(err);
 

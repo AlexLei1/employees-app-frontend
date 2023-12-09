@@ -9,10 +9,10 @@ import Cookies from 'js-cookie';
 const DynamicCheckRole = dynamic(() => import('./CheckRole'), { ssr: false })
 
 const AuthProvider: FC<TypeComponentAuthFields> = ({children, Component: {isOnlyUser}}) => {
-	const {data, currentData} = useCurrentQuery()
+	const {data} = useCurrentQuery()
 	const user = useSelector(selectUser)
 	const dispatch = useDispatch()
-	
+	debugger
 	const onLogoutClick = () => {
 		dispatch(logout());
 		Cookies.remove("token");

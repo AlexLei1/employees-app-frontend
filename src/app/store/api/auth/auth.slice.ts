@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { authApi } from './auth.api';
 import { RootState } from '@/store/store';
 import { IUser } from "@/types/user.types";
+import { getStoreLocal } from "@/utils/localStorage";
 
 interface InitialState {
   user: IUser & { token: string} | null;
@@ -10,7 +11,7 @@ interface InitialState {
 }
 
 const initialState: InitialState = {
-  user: null,
+  user: getStoreLocal('user'),
   isAuthenticated: false,
   isLoading: false
 };

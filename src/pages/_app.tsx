@@ -20,6 +20,7 @@ const queryClient = new QueryClient({
 type TypeAppProps = AppProps & TypeComponentAuthFields
 
 const App = ({Component, pageProps}: TypeAppProps) => {
+	
   return (
 	<Provider store={store}>
 		<QueryClientProvider client={queryClient}>
