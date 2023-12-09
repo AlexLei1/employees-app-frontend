@@ -38,7 +38,6 @@ export const useEditEmployee = () => {
 				...data,
 				...employee
 			}
-			console.log(editedEmployee)
       await editEmployee(editedEmployee).unwrap();
 
     } catch (err) {

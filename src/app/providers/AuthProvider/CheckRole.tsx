@@ -4,14 +4,11 @@ import { TypeComponentAuthFields } from '@/types/auth.type'
 import { useSelector } from 'react-redux'
 import { selectUser } from '@/store/api/auth/auth.slice'
 
-
-
 const CheckRole: FC<TypeComponentAuthFields> = ({children, Component: {isOnlyUser}}) => {
-
-	const user = useSelector(selectUser)
 	const router = useRouter()
-
-	if (user || isOnlyUser) {
+	const user = useSelector(selectUser)
+	
+	if (user && isOnlyUser) {
 		return <>{children}</>
 	} else {
 		router.pathname !== '/login' && router.replace('/login')

@@ -8,11 +8,11 @@ import { useRouter } from 'next/router';
 ;
 
 const Home: FC = () => {
-	// useEffect(()=>{
-  //   console.log('rendered home page!!!')
-	// },[])
 	const {replace} = useRouter()
 	
+	useEffect(() => {
+		console.log('rerender home page!!!!!!')
+	})
   return (
 		<section className={styles.home}>
 			<div className={styles.buttonWrapper}>

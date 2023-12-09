@@ -3,6 +3,7 @@ import { FC } from 'react'
 import { useAddEmployee } from './useAddEmployee'
 import styles from './addEmployee.module.scss'
 import Button from '@/components/ui/button/Button';
+import ErrorMassage from '@/components/ui/error-message/ErrorMassage';
 const AddEmployee: FC = () => {
 	const {registerInput, handleSubmit, error, errors, dirtyFields, isValid, onSubmit} = useAddEmployee()
 	return (
@@ -70,9 +71,10 @@ const AddEmployee: FC = () => {
 						dirty={dirtyFields.address}
 					/>
 
-					<Button isValid={isValid}>
+					<Button disabled={isValid}>
 						Добавить
 					</Button>
+					<ErrorMassage message={error}/>
 			</form>
 			</div>
 		</section>
