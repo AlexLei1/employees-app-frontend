@@ -20,14 +20,18 @@ export const useLogin = () => {
 		reset,
 	} = useForm<ILogin>({mode: 'onChange'})
 
-	
 	const [logErr, setLogErr] = useState('')
-	const [loginUser, {data}] = useLoginMutation();
+	const [loginUser, {data, status}] = useLoginMutation();
+
+	useEffect(() => {
+		if(data !== undefined && status === 'fulfilled') {
+			saveToStorage(data)
+		}
+	}, [status])
 
 	const login = async (loginData: ILogin) => {
     try {
       await loginUser(loginData).unwrap();
-			saveToStorage(data)
     } catch (err) {
       const maybeError = isErrorWithMessage(err);
 
@@ -45,5 +49,5 @@ export const useLogin = () => {
 		reset()
 	}
 
-	return {registerInput, handleSubmit, logErr, errors, dirtyFields, isValid, onSubmit }
+	return { registerInput, handleSubmit, logErr, errors, dirtyFields, isValid, onSubmit }
 }

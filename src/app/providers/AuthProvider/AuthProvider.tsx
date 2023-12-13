@@ -3,26 +3,31 @@ import { TypeComponentAuthFields } from '@/types/auth.type'
 import dynamic from 'next/dynamic';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout, selectUser } from '@/store/api/auth/auth.slice';
-import { useCurrentQuery } from '@/store/api/auth/auth.api';
 import Cookies from 'js-cookie';
+import { useRouter } from 'next/router';
 
 const DynamicCheckRole = dynamic(() => import('./CheckRole'), { ssr: false })
 
 const AuthProvider: FC<TypeComponentAuthFields> = ({children, Component: {isOnlyUser}}) => {
-	const {data} = useCurrentQuery()
 	const user = useSelector(selectUser)
 	const dispatch = useDispatch()
-	debugger
+	const { pathname } = useRouter()
+
+	useEffect(() => {
+		console.log('rerender AuthProvider', user)
+	},[])
+
 	const onLogoutClick = () => {
-		dispatch(logout());
+		localStorage.removeItem('user')
 		Cookies.remove("token");
+		dispatch(logout());
 	};
 
 	useEffect(() => {
-		if (data?.email !== user?.email) {
-			onLogoutClick()
-		}
-	}, []) 
+		const token = Cookies.get('token')
+		console.log(user, token)
+		if (!token && user) onLogoutClick()
+	}, [pathname]) 
 
 	return !isOnlyUser ? (
 		<>{children}</>

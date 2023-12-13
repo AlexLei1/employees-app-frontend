@@ -17,10 +17,11 @@ interface IHeaderLink {
 
 const HeaderLink: FC<IHeaderLink> = ({path, icon, text}) => {
 	const dispatch = useDispatch()
-	const { asPath } = useRouter()
+	const {asPath} = useRouter()
 
 	const onLogoutClick = () => {
 		dispatch(logout());
+	 	localStorage.removeItem('user')
 		Cookies.remove("token");
 	};
 

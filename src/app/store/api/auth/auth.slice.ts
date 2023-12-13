@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { authApi } from './auth.api';
 import { RootState } from '@/store/store';
 import { IUser } from "@/types/user.types";
@@ -63,7 +63,7 @@ export const authSlice = createSlice({
         state.isLoading = false
         state.user = null
         state.isAuthenticated = false;
-      });
+      })
   },
 });
 
