@@ -1,0 +1,19 @@
+.link {
+  color: white;
+  opacity: 0.6;
+  text-decoration: none;
+  display: flex;
+  line-height: 14px;
+}
+.link span {
+  margin-left: 5px;
+}
+.link:hover {
+  opacity: 1;
+  transition: ease-in-out 0.2s;
+}
+
+.active {
+  color: rgb(52, 145, 199);
+  opacity: 1;
+}

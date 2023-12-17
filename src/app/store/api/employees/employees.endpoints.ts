@@ -1,5 +1,5 @@
 
-import { Employee, IAddEmployee } from '@/types/employees.type';
+import { Employee, IAddEmployee, IFormDataEmployee } from '@/types/employees.type';
 import { api } from './../api';
 
 export const employeesApi = api.injectEndpoints({
@@ -16,7 +16,7 @@ export const employeesApi = api.injectEndpoints({
         method: "GET",
       }),
     }),
-    editEmployee: builder.mutation<string, Employee>({
+    editEmployee: builder.mutation<string, IFormDataEmployee>({
       query: (employee) => ({
         url: `/employees/edit/${employee.id}`,
         method: "PUT",

@@ -1,20 +1,59 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import styles from './EditEmployee.module.scss'
 import Field from '@/components/ui/form-elements/Field'
-import { useEditEmployee } from './useEditEmployee'
 import Button from '@/components/ui/button/Button'
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { IAddEmployee } from '@/types/employees.type'
+import { useRouter } from 'next/router'
+import { useEditEmployeeMutation, useGetEmployeeQuery } from '@/store/api/employees/employees.endpoints'
+import { isErrorWithMessage } from '@/utils/check.error'
 
 const EditEmployee: FC = () => {
 
-	const {
-		registerInput, 
-		handleSubmit, 
-		error, 
-		errors, 
-		dirtyFields, 
-		isValid, 
-		onSubmit} = useEditEmployee()
+	const {query, replace} = useRouter()
+	const employeeId = String(query.id)
+	const { data } = useGetEmployeeQuery(employeeId || "");
+	const [error, setError] = useState('')
+	const [editEmployee] = useEditEmployeeMutation();
 
+	const {
+		register: registerInput, 
+		handleSubmit,
+		formState: {errors, dirtyFields, isValid},
+	} = useForm<IAddEmployee>({mode: 'onChange', 
+	defaultValues: {
+		firstName: data?.firstName,
+		lastName: data?.lastName,
+		age: data?.age,
+		address: data?.address,
+	},})
+
+
+const edit = async (formDataEmployee: IAddEmployee) => {
+	try {
+		const editedEmployee = {
+			...data,
+			...formDataEmployee
+		}
+		console.log(editedEmployee)
+		await editEmployee(editedEmployee).unwrap();
+
+	} catch (err) {
+		const maybeError = isErrorWithMessage(err);
+
+		if (maybeError) {
+			setError(err.data.message);
+		} else {
+			setError("Неизвестная ошибка");
+		}
+	}
+};
+
+//принимает данные полей из формы для отправки на сервер
+const onSubmit:SubmitHandler<IAddEmployee> = (formDataEmployee) => {
+	edit(formDataEmployee)
+	replace('/')
+}
 	return (
 	 	<section className={styles.editEmployee}>
 			<div>
@@ -81,7 +120,7 @@ const EditEmployee: FC = () => {
 					/>
 
 					<Button disabled={!isValid}>
-						Добавить
+						Редактировать
 					</Button>
 				</form>
 			</div>

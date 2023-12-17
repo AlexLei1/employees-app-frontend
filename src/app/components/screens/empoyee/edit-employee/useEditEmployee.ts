@@ -8,13 +8,17 @@ import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 
+// https://stackoverflow.com/questions/62242657/how-to-change-react-hook-form-defaultvalue-with-useeffect
+
 export const useEditEmployee = () => {
 	const {query, replace} = useRouter()
 	const employeeId = String(query.id)
 	const { data } = useGetEmployeeQuery(employeeId || "");
+	console.log(employeeId, query)
 	const [error, setError] = useState('')
 	const [editEmployee] = useEditEmployeeMutation();
 
+	
 	const {
 		register: registerInput, 
 		handleSubmit,
@@ -27,11 +31,11 @@ export const useEditEmployee = () => {
 		address: data?.address,
 	},})
 
-	const edit = async (employee: Employee) => {
+	const edit = async (formDataEmployee: IAddEmployee) => {
     try {
 			const editedEmployee = {
 				...data,
-				...employee
+				...formDataEmployee
 			}
 			console.log(editedEmployee)
       await editEmployee(editedEmployee).unwrap();

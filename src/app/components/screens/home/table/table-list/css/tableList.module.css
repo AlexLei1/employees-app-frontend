@@ -1,0 +1,17 @@
+.list li a {
+  width: 100%;
+  background-color: rgba(128, 128, 128, 0.247);
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  justify-items: start;
+  border-bottom: 1px solid rgb(95, 95, 95);
+  padding: 10px;
+  color: white;
+  text-decoration: none;
+}
+.list li a span {
+  padding-left: 5px;
+}
+.list li a:hover {
+  background-color: rgba(172, 172, 172, 0.247);
+}

@@ -13,8 +13,8 @@
   display: flex;
   font-size: 24px;
   color: white;
-  line-height: 12px;
   text-decoration: none;
+  line-height: 24px;
 }
 .header div a h1 {
   margin-left: 10px;
@@ -24,22 +24,4 @@
 }
 .header ul li {
   margin-left: 20px;
-}
-.header ul li a {
-  color: white;
-  opacity: 0.6;
-  text-decoration: none;
-  display: flex;
-  line-height: 12px;
-}
-.header ul li a span {
-  margin-left: 5px;
-}
-.header ul li a:hover {
-  opacity: 1;
-  transition: ease-in-out 0.2s;
-}
-.header ul li .active {
-  color: rgb(52, 145, 199);
-  opacity: 1;
 }
