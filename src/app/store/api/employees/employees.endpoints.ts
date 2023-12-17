@@ -2,8 +2,6 @@
 import { Employee, IAddEmployee } from '@/types/employees.type';
 import { api } from './../api';
 
-
-
 export const employeesApi = api.injectEndpoints({
   endpoints: (builder) => ({
     getAllEmployees: builder.query<Employee[], void>({

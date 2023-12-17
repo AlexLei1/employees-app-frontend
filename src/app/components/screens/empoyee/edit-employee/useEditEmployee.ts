@@ -8,22 +8,17 @@ import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 
-
-
 export const useEditEmployee = () => {
 	const {query, replace} = useRouter()
 	const employeeId = String(query.id)
-	const { data, isLoading } = useGetEmployeeQuery(employeeId || "");
+	const { data } = useGetEmployeeQuery(employeeId || "");
 	const [error, setError] = useState('')
-	const user = useSelector(selectUser)
 	const [editEmployee] = useEditEmployeeMutation();
 
 	const {
 		register: registerInput, 
 		handleSubmit,
 		formState: {errors, dirtyFields, isValid},
-		setValue,
-		reset,
 	} = useForm<IAddEmployee>({mode: 'onChange', 
 	defaultValues: {
 		firstName: data?.firstName,
@@ -38,6 +33,7 @@ export const useEditEmployee = () => {
 				...data,
 				...employee
 			}
+			console.log(editedEmployee)
       await editEmployee(editedEmployee).unwrap();
 
     } catch (err) {
@@ -52,8 +48,8 @@ export const useEditEmployee = () => {
   };
 
 	//принимает данные полей из формы для отправки на сервер
-	const onSubmit:SubmitHandler<Employee> = (data) => {
-		edit(data)
+	const onSubmit:SubmitHandler<IAddEmployee> = (formDataEmployee) => {
+		edit(formDataEmployee)
 		replace('/')
 	}
 

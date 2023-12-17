@@ -13,9 +13,9 @@ const AuthProvider: FC<TypeComponentAuthFields> = ({children, Component: {isOnly
 	const dispatch = useDispatch()
 	const { pathname } = useRouter()
 
-	useEffect(() => {
-		console.log('rerender AuthProvider', user)
-	},[])
+	// useEffect(() => {
+	// 	console.log('rerender AuthProvider', user)
+	// },[])
 
 	const onLogoutClick = () => {
 		localStorage.removeItem('user')
@@ -25,7 +25,6 @@ const AuthProvider: FC<TypeComponentAuthFields> = ({children, Component: {isOnly
 
 	useEffect(() => {
 		const token = Cookies.get('token')
-		console.log(user, token)
 		if (!token && user) onLogoutClick()
 	}, [pathname]) 
 
@@ -39,4 +38,3 @@ const AuthProvider: FC<TypeComponentAuthFields> = ({children, Component: {isOnly
 }
 
 export default AuthProvider
-

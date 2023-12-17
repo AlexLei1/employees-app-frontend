@@ -4,8 +4,6 @@ import Field from '@/components/ui/form-elements/Field'
 import { useEditEmployee } from './useEditEmployee'
 import Button from '@/components/ui/button/Button'
 
-
-
 const EditEmployee: FC = () => {
 
 	const {
@@ -15,15 +13,14 @@ const EditEmployee: FC = () => {
 		errors, 
 		dirtyFields, 
 		isValid, 
-		onSubmit
-	} = useEditEmployee()
+		onSubmit} = useEditEmployee()
 
 	return (
 	 	<section className={styles.editEmployee}>
 			<div>
 				<h1>
 					Войдите
-				</h1> 
+				</h1>
 				<form onSubmit={handleSubmit(onSubmit)}>
 					<Field 
 						{...registerInput("firstName", {
@@ -83,7 +80,7 @@ const EditEmployee: FC = () => {
 						dirty={dirtyFields.address}
 					/>
 
-					<Button isValid={isValid}>
+					<Button disabled={!isValid}>
 						Добавить
 					</Button>
 				</form>
