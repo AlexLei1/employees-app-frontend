@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { FC, useEffect, useMemo, useState } from 'react'
 import styles from './EditEmployee.module.scss'
 import Field from '@/components/ui/form-elements/Field'
 import Button from '@/components/ui/button/Button'
@@ -20,14 +20,25 @@ const EditEmployee: FC = () => {
 		register: registerInput, 
 		handleSubmit,
 		formState: {errors, dirtyFields, isValid},
+		reset
 	} = useForm<IAddEmployee>({mode: 'onChange', 
-	defaultValues: {
-		firstName: data?.firstName,
-		lastName: data?.lastName,
-		age: data?.age,
-		address: data?.address,
-	},})
+	defaultValues: useMemo(() => {
+		return {
+			firstName: data?.firstName,
+			lastName: data?.lastName,
+			age: data?.age,
+			address: data?.address,
+		}
+	}, [data])})
 
+	useEffect(() => {
+    reset({
+			firstName: data?.firstName,
+			lastName: data?.lastName,
+			age: data?.age,
+			address: data?.address,
+		});
+}, [data]);
 
 const edit = async (formDataEmployee: IAddEmployee) => {
 	try {
