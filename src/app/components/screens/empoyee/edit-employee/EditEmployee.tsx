@@ -1,29 +1,75 @@
-import { FC } from 'react'
+import { FC, useEffect, useMemo, useState } from 'react'
 import styles from './EditEmployee.module.scss'
 import Field from '@/components/ui/form-elements/Field'
-import { useEditEmployee } from './useEditEmployee'
 import Button from '@/components/ui/button/Button'
-
-
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { IAddEmployee } from '@/types/employees.type'
+import { useRouter } from 'next/router'
+import { useEditEmployeeMutation, useGetEmployeeQuery } from '@/store/api/employees/employees.endpoints'
+import { isErrorWithMessage } from '@/utils/check.error'
 
 const EditEmployee: FC = () => {
 
-	const {
-		registerInput, 
-		handleSubmit, 
-		error, 
-		errors, 
-		dirtyFields, 
-		isValid, 
-		onSubmit
-	} = useEditEmployee()
+	const {query, replace} = useRouter()
+	const employeeId = String(query.id)
+	const { data } = useGetEmployeeQuery(employeeId || "");
+	const [error, setError] = useState('')
+	const [editEmployee] = useEditEmployeeMutation();
 
+	const {
+		register: registerInput, 
+		handleSubmit,
+		formState: {errors, dirtyFields, isValid},
+		reset
+	} = useForm<IAddEmployee>({mode: 'onChange', 
+	defaultValues: useMemo(() => {
+		return {
+			firstName: data?.firstName,
+			lastName: data?.lastName,
+			age: data?.age,
+			address: data?.address,
+		}
+	}, [data])})
+
+	useEffect(() => {
+    reset({
+			firstName: data?.firstName,
+			lastName: data?.lastName,
+			age: data?.age,
+			address: data?.address,
+		});
+}, [data]);
+
+const edit = async (formDataEmployee: IAddEmployee) => {
+	try {
+		const editedEmployee = {
+			...data,
+			...formDataEmployee
+		}
+		await editEmployee(editedEmployee).unwrap();
+
+	} catch (err) {
+		const maybeError = isErrorWithMessage(err);
+
+		if (maybeError) {
+			setError(err.data.message);
+		} else {
+			setError("Неизвестная ошибка");
+		}
+	}
+};
+
+//принимает данные полей из формы для отправки на сервер
+const onSubmit:SubmitHandler<IAddEmployee> = (formDataEmployee) => {
+	edit(formDataEmployee)
+	replace('/')
+}
 	return (
 	 	<section className={styles.editEmployee}>
 			<div>
 				<h1>
 					Войдите
-				</h1> 
+				</h1>
 				<form onSubmit={handleSubmit(onSubmit)}>
 					<Field 
 						{...registerInput("firstName", {
@@ -83,8 +129,8 @@ const EditEmployee: FC = () => {
 						dirty={dirtyFields.address}
 					/>
 
-					<Button isValid={isValid}>
-						Добавить
+					<Button disabled={!isValid}>
+						Редактировать
 					</Button>
 				</form>
 			</div>

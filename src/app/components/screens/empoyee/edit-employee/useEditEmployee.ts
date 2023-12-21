@@ -8,22 +8,20 @@ import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 
-
+// https://stackoverflow.com/questions/62242657/how-to-change-react-hook-form-defaultvalue-with-useeffect
 
 export const useEditEmployee = () => {
 	const {query, replace} = useRouter()
 	const employeeId = String(query.id)
-	const { data, isLoading } = useGetEmployeeQuery(employeeId || "");
+	const { data } = useGetEmployeeQuery(employeeId || "");
 	const [error, setError] = useState('')
-	const user = useSelector(selectUser)
 	const [editEmployee] = useEditEmployeeMutation();
 
+	
 	const {
 		register: registerInput, 
 		handleSubmit,
 		formState: {errors, dirtyFields, isValid},
-		setValue,
-		reset,
 	} = useForm<IAddEmployee>({mode: 'onChange', 
 	defaultValues: {
 		firstName: data?.firstName,
@@ -32,13 +30,12 @@ export const useEditEmployee = () => {
 		address: data?.address,
 	},})
 
-	const edit = async (employee: Employee) => {
+	const edit = async (formDataEmployee: IAddEmployee) => {
     try {
 			const editedEmployee = {
 				...data,
-				...employee
+				...formDataEmployee
 			}
-			console.log(editedEmployee)
       await editEmployee(editedEmployee).unwrap();
 
     } catch (err) {
@@ -53,8 +50,8 @@ export const useEditEmployee = () => {
   };
 
 	//принимает данные полей из формы для отправки на сервер
-	const onSubmit:SubmitHandler<Employee> = (data) => {
-		edit(data)
+	const onSubmit:SubmitHandler<IAddEmployee> = (formDataEmployee) => {
+		edit(formDataEmployee)
 		replace('/')
 	}
 

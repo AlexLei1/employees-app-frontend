@@ -8,9 +8,6 @@ import { useRouter } from 'next/router';
 ;
 
 const Home: FC = () => {
-	// useEffect(()=>{
-  //   console.log('rendered home page!!!')
-	// },[])
 	const {replace} = useRouter()
 	
   return (

@@ -1,8 +1,9 @@
 
 import { useLoginMutation } from '@/store/api/auth/auth.api';
 import { selectUser } from '@/store/api/auth/auth.slice';
+import { saveToStorage } from '@/utils/auth.helper';
 import { isErrorWithMessage } from '@/utils/check.error';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 
@@ -19,15 +20,18 @@ export const useLogin = () => {
 		reset,
 	} = useForm<ILogin>({mode: 'onChange'})
 
-	
 	const [logErr, setLogErr] = useState('')
-	const user = useSelector(selectUser) // текущее состояние пользователя
-	const [loginUser] = useLoginMutation();
+	const [loginUser, {data, status}] = useLoginMutation();
 
-	const login = async (data: ILogin) => {
+	useEffect(() => {
+		if(data !== undefined && status === 'fulfilled') {
+			saveToStorage(data)
+		}
+	}, [status])
+
+	const login = async (loginData: ILogin) => {
     try {
-      await loginUser(data).unwrap();
-
+      await loginUser(loginData).unwrap();
     } catch (err) {
       const maybeError = isErrorWithMessage(err);
 
@@ -45,5 +49,5 @@ export const useLogin = () => {
 		reset()
 	}
 
-	return {registerInput, handleSubmit, logErr, errors, dirtyFields, isValid, onSubmit }
+	return { registerInput, handleSubmit, logErr, errors, dirtyFields, isValid, onSubmit }
 }

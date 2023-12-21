@@ -42,7 +42,6 @@ export const useAddEmployee = () => {
 	//принимает данные полей из формы для отправки на сервер
 	const onSubmit:SubmitHandler<IAddEmployee> = (data) => {
 		add(data)
-		reset()
 	}
 
 	return {registerInput, handleSubmit, error, errors, dirtyFields, isValid, onSubmit }
