@@ -16,7 +16,7 @@ export const endpointsSlice = createSlice({
   name: "employees",
   initialState,
   reducers: {
-    logoutEm: () => initialState,
+    logout: () => initialState,
   },
   extraReducers: (builder) => {
     builder
@@ -26,8 +26,5 @@ export const endpointsSlice = createSlice({
   },
 });
 
-
-
 export const {reducer} = endpointsSlice
-export const { logoutEm } = endpointsSlice.actions;
 export const selectEmployees = (state: RootState) => state.employees.employees;

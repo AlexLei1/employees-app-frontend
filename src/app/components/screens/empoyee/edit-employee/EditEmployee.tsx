@@ -46,7 +46,6 @@ const edit = async (formDataEmployee: IAddEmployee) => {
 			...data,
 			...formDataEmployee
 		}
-		console.log(editedEmployee)
 		await editEmployee(editedEmployee).unwrap();
 
 	} catch (err) {

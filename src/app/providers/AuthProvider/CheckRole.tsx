@@ -7,12 +7,12 @@ import { useCurrentQuery } from '@/store/api/auth/auth.api'
 
 const CheckRole: FC<TypeComponentAuthFields> = ({children, Component: {isOnlyUser}}) => {
 	const router = useRouter()
-	const user = useSelector(selectUser)
+	const isAuthenticaterd = useSelector(selectUser)
 	const {data} = useCurrentQuery()
-	
-	if (user) return <>{children}</>
 
-	if (user && isOnlyUser) {
+	console.log(data)
+
+	if (data && !!isOnlyUser) {
 		return <>{children}</>
 	} else {
 		router.pathname !== '/login' && router.replace('/login')

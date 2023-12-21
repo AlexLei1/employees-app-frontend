@@ -14,7 +14,6 @@ export const useEditEmployee = () => {
 	const {query, replace} = useRouter()
 	const employeeId = String(query.id)
 	const { data } = useGetEmployeeQuery(employeeId || "");
-	console.log(employeeId, query)
 	const [error, setError] = useState('')
 	const [editEmployee] = useEditEmployeeMutation();
 
@@ -37,7 +36,6 @@ export const useEditEmployee = () => {
 				...data,
 				...formDataEmployee
 			}
-			console.log(editedEmployee)
       await editEmployee(editedEmployee).unwrap();
 
     } catch (err) {

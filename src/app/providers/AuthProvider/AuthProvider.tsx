@@ -5,28 +5,24 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logout, selectUser } from '@/store/api/auth/auth.slice';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/router';
+import { api } from '@/store/api/api';
+import { useCurrentQuery } from '@/store/api/auth/auth.api';
 
 const DynamicCheckRole = dynamic(() => import('./CheckRole'), { ssr: false })
 
 const AuthProvider: FC<TypeComponentAuthFields> = ({children, Component: {isOnlyUser}}) => {
-	const user = useSelector(selectUser)
 	const dispatch = useDispatch()
-	const { pathname } = useRouter()
-
-	// useEffect(() => {
-	// 	console.log('rerender AuthProvider', user)
-	// },[])
 
 	const onLogoutClick = () => {
 		localStorage.removeItem('user')
-		Cookies.remove("token");
-		dispatch(logout());
+		dispatch(api.util.resetApiState());
+		dispatch(logout())
 	};
-
+	// при первом рендере и переходе на другую страницу проверяет наличие токена в cookies и выходит из системы при отсутствии данных
 	useEffect(() => {
 		const token = Cookies.get('token')
-		if (!token && user) onLogoutClick()
-	}, [pathname]) 
+		if (!token) onLogoutClick()
+	}, []) 
 
 	return !isOnlyUser ? (
 		<>{children}</>

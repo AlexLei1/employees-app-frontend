@@ -6,7 +6,7 @@ import { TypeComponentAuthFields } from '@/types/auth.type'
 import { Provider } from 'react-redux'
 import { store } from '@/store/store'
 import { QueryClient, QueryClientProvider } from 'react-query'
-import AuthProvider from 'app/providers/AuthProvider/AuthProvider'
+import AuthProvider from '@/provider/AuthProvider/AuthProvider'
 
 
 const queryClient = new QueryClient({
