@@ -6,11 +6,13 @@ import { isErrorWithMessage } from '@/utils/check.error';
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 
 
 
 
 export const useAddEmployee = () => {
+	const {replace} = useRouter()
 	const {
 		register: registerInput, 
 		handleSubmit,
@@ -42,6 +44,8 @@ export const useAddEmployee = () => {
 	//принимает данные полей из формы для отправки на сервер
 	const onSubmit:SubmitHandler<IAddEmployee> = (data) => {
 		add(data)
+		reset()
+		replace('/')
 	}
 
 	return {registerInput, handleSubmit, error, errors, dirtyFields, isValid, onSubmit }

@@ -71,7 +71,7 @@ const AddEmployee: FC = () => {
 						dirty={dirtyFields.address}
 					/>
 
-					<Button disabled={isValid}>
+					<Button disabled={!isValid}>
 						Добавить
 					</Button>
 					<ErrorMassage message={error}/>
