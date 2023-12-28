@@ -10,6 +10,10 @@ interface InitialState {
 }
 
 const initialState: InitialState = {
+  user: getStoreLocal('user'),
+  isAuthenticated: false,
+};
+const logoutState: InitialState = {
   user: null,
   isAuthenticated: false,
 };
@@ -18,7 +22,7 @@ export const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    logout: () => initialState,
+    logout: () => logoutState
   },
   extraReducers: (builder) => {
     builder
