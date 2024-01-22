@@ -1,38 +1,64 @@
-# employees-app-frontend
+<div align='center'><img src='public/employee-180x180.svg'/></div>
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h2>About the project</h2>
 
-## Getting Started
+<p>
+It's an intuitive and easy-to-use employee management app that lets you add employees and manage their data anywhere.
+</p>
 
-First, run the development server:
+<h3>Build with:</h3>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+» SASS/SCSS <br>
+» Next JS <br>
+» Typescript <br>
+» Redux/Toolkit<br>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+<h2>Screenshots of the Project 📸</h2>
+<br>
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+<h3 align='center'>Login</h3>
 
-## Learn More
+<div align='center'>
+	<img src='https://sun9-80.userapi.com/impg/jjtrm91YI1qbfPWt9fg4X1JUpwvfyHQkYiSnZQ/AetymnWjQEs.jpg?size=2560x1440&quality=95&sign=688ae19dc66aace4ded3d6bb1e2daab7&type=album'/>
+</div>
 
-To learn more about Next.js, take a look at the following resources:
+<br>
+<br>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+<h3 align='center'>Register</h3>
 
-## Deploy on Vercel
+<div align='center'>
+	<img src='https://sun9-29.userapi.com/impg/mw2k94cXsgbf8mjon_c4xPEJmawxrxBDek74sQ/leh66qNhdo0.jpg?size=2560x1440&quality=95&sign=1b6456b0cbb98a09e4b2aaab4b6466b8&type=album'/>
+</div>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+<br>
+<br>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<h3 align='center'>Home</h3>
+
+<div align='center'>
+	<img src='https://sun9-54.userapi.com/impg/3flBjGTn-SZHW651AoL0LGMeV7hbQepALFda7w/v66dJSZrq8w.jpg?size=2560x1440&quality=95&sign=17c8151a656701edac8ccf45e26c264d&type=album'/>
+</div>
+
+<br>
+<br>
+
+<h3 align='center'>Employee</h3>
+
+<div align='center'>
+	<img src='https://sun9-10.userapi.com/impg/ViFoz6UemrRCDXhwCsnSLGG3s2ubFN_4JPwHNQ/19COJrf1Pao.jpg?size=2560x1440&quality=95&sign=358aa52ae1d6b63906ec7e247d9fcd43&type=album'/>
+</div>
+
+<br>
+<br>
+
+<h3 align='center'>Edit Employee</h3>
+
+<div align='center'>
+	<img src='https://sun9-4.userapi.com/impg/ajxLzv8-HG1n2C36mP-_9U7jHUfT1sQNrvfjtw/zHsiWNYAMYg.jpg?size=2560x1440&quality=95&sign=e7b2f7db1181b2ffd9a450d61cacd20c&type=album'/>
+</div>
+
+<br>
+<br>

@@ -10,8 +10,6 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
-    "antd": "^5.1.5",
-    "axios": "^1.5.1",
     "classnames": "^2.3.2",
     "js-cookie": "^3.0.5",
     "lodash": "^4.17.21",
