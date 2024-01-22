@@ -68,7 +68,7 @@ const onSubmit:SubmitHandler<IAddEmployee> = (formDataEmployee) => {
 	 	<section className={styles.editEmployee}>
 			<div>
 				<h1>
-					Войдите
+					{`Данные сотрудника ${data?.firstName}`}
 				</h1>
 				<form onSubmit={handleSubmit(onSubmit)}>
 					<Field 
